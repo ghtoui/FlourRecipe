@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.ui.destination.home
+package com.ghtoui.flourRecipe.ui.destination.settings
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
@@ -10,20 +10,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
-import com.ghtoui.flourRecipe.ui.destination.settings.navigateToSettings
 
-/**
- * ホーム画面
- */
 @Composable
-fun HomeScreen(
+fun SettingsScreen(
     mainNavHostController: NavHostController = LocalMainNavController.current
 ) {
     Button(
         modifier = Modifier
             .padding(top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()),
-        onClick = mainNavHostController::navigateToSettings
+        onClick = mainNavHostController::popBackStack
     ) {
-        Text(text = "home")
+        Text(text = "back")
     }
 }
