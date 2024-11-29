@@ -1,12 +1,6 @@
 package com.ghtoui.flourRecipe.ui.destination.home
 
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBars
-import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,13 +25,6 @@ private fun HomeScreen(
     onClickButton: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Button(
-        modifier = Modifier
-            .padding(top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()),
-        onClick = onClickButton,
-    ) {
-        Text(text = "home")
-    }
 }
 
 @Preview

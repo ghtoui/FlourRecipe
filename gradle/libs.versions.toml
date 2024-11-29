@@ -11,6 +11,7 @@ composeBom = "2024.11.00"
 ktlint = "12.1.1"
 navigation = "2.8.4"
 kotlinSerializationJson = "1.7.3"
+coil = "3.0.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,6 +34,9 @@ navigation-compose = { group = "androidx.navigation", name = "navigation-compose
 
 # json serialization
 kotlin-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationJson" }
+
+# coil
+coil = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

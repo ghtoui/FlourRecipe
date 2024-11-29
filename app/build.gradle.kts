@@ -66,9 +66,12 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-//    navigation
+    // navigation
     implementation(libs.navigation.compose)
 
     // kotlin serialization json
     implementation(libs.kotlin.serialization)
+
+    // coil
+    implementation(libs.coil)
 }
