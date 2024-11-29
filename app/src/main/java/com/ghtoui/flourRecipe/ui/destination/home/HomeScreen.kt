@@ -69,7 +69,7 @@ private fun HomeScreen(
                     .fillMaxSize(),
                 state = lazyListState,
                 contentPadding = PaddingValues(vertical = 20.dp, horizontal = 24.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
+                verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 items(recipes, key = { it.id }) { recipe ->
                     RecipeListItem(
@@ -84,11 +84,11 @@ private fun HomeScreen(
                     modifier = Modifier
                         .padding(24.dp)
                         .align(Alignment.BottomEnd),
-                    onClick = { onAddClick() }
+                    onClick = { onAddClick() },
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.ic_add),
-                        contentDescription = stringResource(id = R.string.description_add_recipe)
+                        contentDescription = stringResource(id = R.string.description_add_recipe),
                     )
                 }
             }
@@ -106,7 +106,7 @@ private fun HomeScreenPreview() {
                 recipes = dummyFlourRecipe,
                 onRecipeClick = {},
                 backAble = false,
-                onAddClick = {}
+                onAddClick = {},
             )
         }
     }
