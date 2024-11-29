@@ -30,8 +30,8 @@ fun FlourAsyncImage(
             listOf(
                 MaterialTheme.colorScheme.surface,
                 MaterialTheme.colorScheme.surface,
-            )
-        )
+            ),
+        ),
     ),
 ) {
     AsyncImage(
@@ -40,7 +40,7 @@ fun FlourAsyncImage(
         contentDescription = contentDescription,
         contentScale = contentScale,
         placeholder = placeholder,
-        error = painterResource(id = R.drawable.ic_bread)
+        error = painterResource(id = R.drawable.ic_bread),
     )
 }
 

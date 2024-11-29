@@ -12,5 +12,5 @@ package com.ghtoui.flourRecipe.model.recipe
 data class RecipeProcess(
     val name: String,
     val description: String,
-    val memo: String,
+    val memo: String?,
 )

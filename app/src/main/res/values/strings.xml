@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">FlourRecipe</string>
+
+    <!--  content description  -->
+    <string name="description_back_navigation">戻る</string>
+
+
+    <!--  ホーム  -->
+    <string name="home_app_top_bar_title">ホーム</string>
+
 </resources>
