@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.ui.component
+package com.ghtoui.flourRecipe.ui.components
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme

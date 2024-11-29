@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.model.recipe.FlourRecipe
-import com.ghtoui.flourRecipe.ui.component.FlourTopAppBar
+import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.components.RecipeListItem
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
@@ -31,7 +31,7 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
  * ホーム画面
  */
 @Composable
-fun HomeScreen() {
+internal fun HomeScreen() {
     HomeScreen(
         modifier = Modifier,
         recipes = getDummyRecipes(count = 20),

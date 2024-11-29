@@ -5,6 +5,9 @@
     <string name="description_back_navigation">戻る</string>
     <string name="description_add_recipe">レシピを追加</string>
 
+    <!-- ボトムバー -->
+    <string name="bottom_home_bar_label">ホーム</string>
+    <string name="bottom_settings_bar_label">設定</string>
 
     <!--  ホーム  -->
     <string name="home_app_top_bar_title">ホーム</string>
