@@ -11,7 +11,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
-import com.ghtoui.flourRecipe.ui.destination.MainNavHost
+import com.ghtoui.flourRecipe.ui.main.MainScreen
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colorScheme.background,
                     ) {
-                        MainNavHost()
+                        MainScreen()
                     }
                 }
             }

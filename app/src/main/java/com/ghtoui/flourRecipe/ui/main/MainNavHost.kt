@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.ui.destination
+package com.ghtoui.flourRecipe.ui.main
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

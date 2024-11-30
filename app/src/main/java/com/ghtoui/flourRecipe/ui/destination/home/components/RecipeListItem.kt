@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ghtoui.flourRecipe.core.extensions.zoneddatetime.formatDateTime
 import com.ghtoui.flourRecipe.model.recipe.FlourRecipe
-import com.ghtoui.flourRecipe.ui.component.FlourAsyncImage
+import com.ghtoui.flourRecipe.ui.components.FlourAsyncImage
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
