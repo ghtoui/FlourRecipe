@@ -10,12 +10,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -41,6 +44,7 @@ internal fun HomeScreen() {
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun HomeScreen(
     recipes: List<FlourRecipe>,
@@ -51,12 +55,15 @@ private fun HomeScreen(
 ) {
     val lazyListState = rememberLazyListState()
     val visibleAddButton = !lazyListState.isScrollInProgress
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+
     Scaffold(
         modifier = modifier,
         topBar = {
             FlourTopAppBar(
                 title = stringResource(id = R.string.home_app_top_bar_title),
                 backAble = backAble,
+                scrollBehavior = scrollBehavior
             )
         },
     ) { innerPadding ->
@@ -66,7 +73,8 @@ private fun HomeScreen(
         ) {
             LazyColumn(
                 modifier = Modifier
-                    .fillMaxSize(),
+                    .fillMaxSize()
+                    .nestedScroll(scrollBehavior.nestedScrollConnection),
                 state = lazyListState,
                 contentPadding = PaddingValues(vertical = 20.dp, horizontal = 24.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
