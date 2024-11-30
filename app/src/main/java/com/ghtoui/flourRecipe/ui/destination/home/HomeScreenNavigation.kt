@@ -15,5 +15,12 @@ fun NavGraphBuilder.homeScreen() {
 }
 
 fun NavHostController.navigateToHome() {
-    navigate(HomeScreenRoute)
+    navigate(
+        route = HomeScreenRoute,
+    ) {
+        popUpTo(graph.id) {
+            saveState = true
+        }
+        restoreState = true
+    }
 }

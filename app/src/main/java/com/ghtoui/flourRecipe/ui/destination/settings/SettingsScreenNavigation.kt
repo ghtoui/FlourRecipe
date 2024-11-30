@@ -15,5 +15,10 @@ fun NavGraphBuilder.settingsScreen() {
 }
 
 fun NavHostController.navigateToSettings() {
-    navigate(SettingsScreenRoute)
+    navigate(route = SettingsScreenRoute) {
+        popUpTo(graph.id) {
+            saveState = true
+        }
+        restoreState = true
+    }
 }
