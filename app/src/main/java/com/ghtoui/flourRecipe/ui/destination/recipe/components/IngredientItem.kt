@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.ui.destination.home.detail.components
+package com.ghtoui.flourRecipe.ui.destination.recipe.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer

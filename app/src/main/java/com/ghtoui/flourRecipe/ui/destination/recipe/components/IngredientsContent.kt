@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.ui.destination.home.detail.components
+package com.ghtoui.flourRecipe.ui.destination.recipe.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

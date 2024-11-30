@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.ui.destination.home.detail
+package com.ghtoui.flourRecipe.ui.destination.recipe
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,22 +11,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
 import com.ghtoui.flourRecipe.model.recipe.RecipeIngredient
-import com.ghtoui.flourRecipe.ui.destination.home.detail.components.IngredientContent
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyIngredients
+import com.ghtoui.flourRecipe.ui.destination.recipe.components.IngredientContent
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
 @Composable
-internal fun HomeDetailScreen(
+internal fun RecipeScreen(
     mainNavController: NavHostController = LocalMainNavController.current
 ) {
-    HomeDetailScreen(
+    RecipeScreen(
         modifier = Modifier,
         recipeIngredients = getDummyIngredients()
     )
 }
 
 @Composable
-private fun HomeDetailScreen(
+private fun RecipeScreen(
     recipeIngredients: List<RecipeIngredient>,
     modifier: Modifier = Modifier
 ) {
@@ -45,11 +45,11 @@ private fun HomeDetailScreen(
 
 @Preview
 @Composable
-private fun HomeDetailScreenPreview() {
+private fun RecipeScreenPreview() {
     val dummyIngredients = getDummyIngredients()
     FlourRecipeTheme {
         Surface {
-            HomeDetailScreen(
+            RecipeScreen(
                 modifier = Modifier,
                 recipeIngredients = dummyIngredients,
             )
