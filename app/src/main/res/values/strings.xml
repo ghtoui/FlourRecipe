@@ -16,7 +16,7 @@
     <!--  ホーム  -->
     <string name="home_app_top_bar_title">ホーム</string>
 
-    <!--  ホーム詳細  -->
-    <string name="home_detail_">材料</string>
+    <!--  レシピ  -->
+    <string name="recipe_app_top_bar_title">レシピ</string>
 
 </resources>
