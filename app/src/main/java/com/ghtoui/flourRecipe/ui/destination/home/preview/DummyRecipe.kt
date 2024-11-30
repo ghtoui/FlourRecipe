@@ -14,6 +14,25 @@ internal fun getDummyRecipes(count: Int = 5): List<FlourRecipe> {
     }
 }
 
+internal fun getDummyIngredients(): List<RecipeIngredient> = listOf(
+    RecipeIngredient(
+        baseIngredient = getBaseIngredient(1),
+        quantity = 100,
+    ),
+    RecipeIngredient(
+        baseIngredient = getBaseIngredient(2),
+        quantity = 100,
+    ),
+    RecipeIngredient(
+        baseIngredient = getBaseIngredient(3),
+        quantity = 100,
+    ),
+    RecipeIngredient(
+        baseIngredient = getBaseIngredient(4),
+        quantity = 100,
+    ),
+)
+
 private fun getFlourRecipe(id: Int): FlourRecipe = FlourRecipe(
     id = id,
     path = null,
@@ -41,24 +60,8 @@ private fun getRecipeDetails(id: Int): RecipeDetail = RecipeDetail(
             memo = null,
         ),
     ),
-    ingredients = listOf(
-        RecipeIngredient(
-            baseIngredient = getBaseIngredient(1),
-            quantity = 100,
-        ),
-        RecipeIngredient(
-            baseIngredient = getBaseIngredient(2),
-            quantity = 100,
-        ),
-        RecipeIngredient(
-            baseIngredient = getBaseIngredient(3),
-            quantity = 100,
-        ),
-        RecipeIngredient(
-            baseIngredient = getBaseIngredient(4),
-            quantity = 100,
-        ),
-    ),
+    ingredients = getDummyIngredients(),
+    servings = 10,
 )
 
 private fun getBaseIngredient(id: Int): BaseIngredient {
@@ -73,5 +76,6 @@ private fun getBaseIngredient(id: Int): BaseIngredient {
         name = ingredientMap.keys.toList()[ingredientMap.keys.size % id],
         calorie = ingredientMap.values.toList()[ingredientMap.values.size % id],
         baseQuantity = 100,
+        unit = "g",
     )
 }
