@@ -31,16 +31,16 @@ internal fun FlourBottomBar(
     selectedItem: BottomBarItem,
     onHomeClick: () -> Unit,
     onSettingsClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     BottomAppBar(
-        modifier = modifier
+        modifier = modifier,
     ) {
         BottomBarItem.entries.forEach { bottomBarItem ->
             NavigationBarItem(
                 // 選択済みのインジケーターは表示しない
                 colors = NavigationBarItemDefaults.colors().copy(
-                    selectedIndicatorColor = Color.Transparent
+                    selectedIndicatorColor = Color.Transparent,
                 ),
                 selected = selectedItem == bottomBarItem,
                 onClick = when (bottomBarItem) {
@@ -54,17 +54,17 @@ internal fun FlourBottomBar(
                                 bottomBarItem.selectedIcon
                             } else {
                                 bottomBarItem.icon
-                            }
+                            },
                         ),
-                        contentDescription = null
+                        contentDescription = null,
                     )
                 },
                 label = {
                     Text(
                         text = stringResource(id = bottomBarItem.label),
-                        style = MaterialTheme.typography.labelSmall
+                        style = MaterialTheme.typography.labelSmall,
                     )
-                }
+                },
             )
         }
     }
@@ -73,7 +73,7 @@ internal fun FlourBottomBar(
 @Preview
 @Composable
 private fun FlourBottomNavigationPreview(
-    @PreviewParameter(FlourBottomNavigationPreviewPPP::class) param: FlourBottomNavigationPreviewPPP.Param
+    @PreviewParameter(FlourBottomNavigationPreviewPPP::class) param: FlourBottomNavigationPreviewPPP.Param,
 ) {
     FlourRecipeTheme {
         Surface {
@@ -81,7 +81,7 @@ private fun FlourBottomNavigationPreview(
                 modifier = Modifier,
                 onSettingsClick = {},
                 onHomeClick = {},
-                selectedItem = param.selectedItem
+                selectedItem = param.selectedItem,
             )
         }
     }
@@ -96,9 +96,9 @@ private class FlourBottomNavigationPreviewPPP :
             Param(
                 BottomBarItem.Settings,
             ),
-        )
+        ),
     ) {
     data class Param(
-        val selectedItem: BottomBarItem
+        val selectedItem: BottomBarItem,
     )
 }

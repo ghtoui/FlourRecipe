@@ -23,9 +23,9 @@ internal fun MainScreen(
             FlourBottomBar(
                 selectedItem = BottomBarItem.Home,
                 onHomeClick = mainNavController::navigateToHome,
-                onSettingsClick = mainNavController::navigateToSettings
+                onSettingsClick = mainNavController::navigateToSettings,
             )
-        }
+        },
     ) { innerPadding ->
         MainNavHost(modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding()))
     }

@@ -63,7 +63,7 @@ private fun HomeScreen(
             FlourTopAppBar(
                 title = stringResource(id = R.string.home_app_top_bar_title),
                 backAble = backAble,
-                scrollBehavior = scrollBehavior
+                scrollBehavior = scrollBehavior,
             )
         },
     ) { innerPadding ->
