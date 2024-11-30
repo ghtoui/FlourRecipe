@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.ui.destination.recipe
+package com.ghtoui.flourRecipe.ui.destination.home.recipe
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,7 +21,7 @@ import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
 import com.ghtoui.flourRecipe.model.recipe.RecipeIngredient
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyIngredients
-import com.ghtoui.flourRecipe.ui.destination.recipe.components.IngredientContent
+import com.ghtoui.flourRecipe.ui.destination.home.recipe.components.IngredientContent
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
 @Composable

@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.ui.destination.recipe.components
+package com.ghtoui.flourRecipe.ui.destination.home.recipe.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,6 +16,12 @@ import com.ghtoui.flourRecipe.ui.destination.home.components.QuantityText
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyIngredients
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
+/**
+ * 材料アイテム
+ *
+ * @param recipeIngredient 材料
+ * @param modifier [Modifier]
+ */
 @Composable
 internal fun IngredientItem(
     recipeIngredient: RecipeIngredient,

@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.ui.destination.recipe
+package com.ghtoui.flourRecipe.ui.destination.home.recipe
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
