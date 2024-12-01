@@ -18,10 +18,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
-import com.ghtoui.flourRecipe.model.recipe.RecipeIngredient
+import com.ghtoui.flourRecipe.model.recipe.RecipeDetail
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
-import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyIngredients
+import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
 import com.ghtoui.flourRecipe.ui.destination.home.recipe.components.IngredientContent
+import com.ghtoui.flourRecipe.ui.destination.home.recipe.components.ProcessContent
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
 @Composable
@@ -30,7 +31,7 @@ internal fun RecipeScreen(
 ) {
     RecipeScreen(
         modifier = Modifier,
-        recipeIngredients = getDummyIngredients(),
+        recipeDetail = getDummyRecipes().first().recipeDetail,
         backAble = true,
         onBackClick = mainNavController::popBackStack
     )
@@ -39,7 +40,7 @@ internal fun RecipeScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun RecipeScreen(
-    recipeIngredients: List<RecipeIngredient>,
+    recipeDetail: RecipeDetail,
     backAble: Boolean,
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -68,8 +69,12 @@ private fun RecipeScreen(
         ) {
             IngredientContent(
                 modifier = Modifier.fillMaxWidth(),
-                recipeIngredients = recipeIngredients,
+                recipeIngredients = recipeDetail.ingredients,
                 servings = 10
+            )
+            ProcessContent(
+                modifier = Modifier.fillMaxWidth(),
+                recipeProcess = recipeDetail.recipeProcess,
             )
         }
     }
@@ -78,12 +83,12 @@ private fun RecipeScreen(
 @Preview
 @Composable
 private fun RecipeScreenPreview() {
-    val dummyIngredients = getDummyIngredients()
+    val dummyRecipeDetail = getDummyRecipes().first().recipeDetail
     FlourRecipeTheme {
         Surface {
             RecipeScreen(
                 modifier = Modifier,
-                recipeIngredients = dummyIngredients,
+                recipeDetail = dummyRecipeDetail,
                 backAble = true,
                 onBackClick = {},
             )

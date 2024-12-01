@@ -33,6 +33,19 @@ internal fun getDummyIngredients(): List<RecipeIngredient> = listOf(
     ),
 )
 
+internal fun getDummyProcess(): List<RecipeProcess> = listOf(
+    RecipeProcess(
+        name = "粉を入れます",
+        description = "小麦粉とドライイーストを入れます",
+        memo = "よく混ぜると良いです",
+    ),
+    RecipeProcess(
+        name = "水を入れます",
+        description = "よく混ぜた粉に水を入れます",
+        memo = null,
+    ),
+)
+
 private fun getFlourRecipe(id: Int): FlourRecipe = FlourRecipe(
     id = id,
     path = null,
@@ -48,18 +61,7 @@ private fun getFlourRecipe(id: Int): FlourRecipe = FlourRecipe(
 
 private fun getRecipeDetails(id: Int): RecipeDetail = RecipeDetail(
     id = id,
-    recipeProcess = listOf(
-        RecipeProcess(
-            name = "粉を入れます",
-            description = "小麦粉とドライイーストを入れます",
-            memo = "よく混ぜると良いです",
-        ),
-        RecipeProcess(
-            name = "水を入れます",
-            description = "よく混ぜた粉に水を入れます",
-            memo = null,
-        ),
-    ),
+    recipeProcess = getDummyProcess(),
     ingredients = getDummyIngredients(),
     servings = 10,
 )

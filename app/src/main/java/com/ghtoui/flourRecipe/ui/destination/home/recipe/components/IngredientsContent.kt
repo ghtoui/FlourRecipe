@@ -88,9 +88,9 @@ private fun IngredientTitle(
         Row {
             HorizontalDivider(
                 modifier = Modifier.weight(1f),
-                color = MaterialTheme.colorScheme.secondary
+                color = MaterialTheme.colorScheme.primary
             )
-            HorizontalDivider(modifier = Modifier.weight(1f))
+            HorizontalDivider(modifier = Modifier.weight(2f))
         }
     }
 }
