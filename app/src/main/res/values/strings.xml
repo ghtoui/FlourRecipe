@@ -18,5 +18,7 @@
 
     <!--  レシピ  -->
     <string name="recipe_app_top_bar_title">レシピ</string>
+    <string name="recipe_process">手順</string>
+    <string name="recipe_memo">メモ</string>
 
 </resources>

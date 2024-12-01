@@ -1,7 +1,9 @@
 package com.ghtoui.flourRecipe.ui.destination.home.recipe
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -72,6 +74,7 @@ private fun RecipeScreen(
                 recipeIngredients = recipeDetail.ingredients,
                 servings = 10
             )
+            Spacer(modifier = Modifier.height(24.dp))
             ProcessContent(
                 modifier = Modifier.fillMaxWidth(),
                 recipeProcess = recipeDetail.recipeProcess,

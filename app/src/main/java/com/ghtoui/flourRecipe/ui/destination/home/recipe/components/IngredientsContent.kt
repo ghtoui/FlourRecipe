@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.model.recipe.RecipeIngredient
+import com.ghtoui.flourRecipe.ui.components.BiColorHorizontalDivider
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyIngredients
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
@@ -69,7 +70,7 @@ private fun IngredientTitle(
         ) {
             Text(
                 text = stringResource(id = R.string.ingredient),
-                style = MaterialTheme.typography.titleLarge,
+                style = MaterialTheme.typography.headlineLarge,
             )
             Spacer(modifier = Modifier.weight(1f))
             Row {
@@ -85,13 +86,7 @@ private fun IngredientTitle(
                 )
             }
         }
-        Row {
-            HorizontalDivider(
-                modifier = Modifier.weight(1f),
-                color = MaterialTheme.colorScheme.primary
-            )
-            HorizontalDivider(modifier = Modifier.weight(2f))
-        }
+        BiColorHorizontalDivider(modifier = Modifier.fillMaxWidth())
     }
 }
 
