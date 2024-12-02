@@ -9,10 +9,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
@@ -28,39 +29,50 @@ internal fun TitleBorderBox(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
-    val titleHeight = rememberSaveable {
-        mutableIntStateOf(0)
+    val titleHeight = remember {
+        mutableStateOf(0.dp)
     }
+    val current = LocalDensity.current
     Box(
         modifier = Modifier,
     ) {
         Box(
             modifier = modifier
-                .padding(top = (titleHeight.intValue / 2).dp)
+                .padding(top = titleHeight.value)
                 .border(
-                    width = 2.dp,
-                    color = MaterialTheme.colorScheme.secondaryContainer,
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.secondary,
                     shape = RoundedCornerShape(24.dp),
                 )
-                .padding(horizontal = 12.dp, vertical = 30.dp),
+                .padding(horizontal = 12.dp, vertical = 20.dp),
         ) {
             content.invoke()
         }
-        Text(
+        Box(
             modifier = Modifier
-                .padding(start = 40.dp)
+                .padding(start = 20.dp)
+                .border(
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.secondary,
+                    shape = RoundedCornerShape(24.dp),
+                )
                 .background(
                     color = MaterialTheme.colorScheme.secondaryContainer,
                     shape = RoundedCornerShape(24.dp),
                 )
-                .padding(horizontal = 18.dp, vertical = 4.dp)
+                .padding(horizontal = 18.dp, vertical = 2.dp)
                 .onGloballyPositioned {
-                    titleHeight.intValue = it.size.height / 2
+                    with(current) {
+                        titleHeight.value = (it.size.height / 2).toDp()
+                    }
                 },
-            text = topTitle,
-            style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.onSecondary,
-        )
+        ) {
+            Text(
+                text = topTitle,
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSecondaryContainer,
+            )
+        }
     }
 }
 

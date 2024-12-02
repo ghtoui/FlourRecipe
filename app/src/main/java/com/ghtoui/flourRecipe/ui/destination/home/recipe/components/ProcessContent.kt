@@ -37,10 +37,14 @@ internal fun ProcessContent(
         RecipeTitle()
         Spacer(modifier = Modifier.height(16.dp))
         Column(
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(24.dp),
         ) {
             recipeProcess.forEachIndexed { index, recipeProcess ->
-                ProcessItem(index = index, recipeProcess = recipeProcess)
+                // 1始まりにする
+                ProcessItem(
+                    index = index + 1,
+                    recipeProcess = recipeProcess,
+                )
                 HorizontalDivider()
             }
         }

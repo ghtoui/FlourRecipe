@@ -7,7 +7,7 @@ import java.time.ZonedDateTime
  *
  * @property id ID
  * @property name レシピ名
- * @property path 完成画像パス
+ * @property imagePath 完成画像パス
  * @property lastCreateDate 最後にレシピのものを作成した日
  * @property createRecipeDate レシピを作成した日
  * @property recipeDetail レシピ詳細
@@ -19,7 +19,7 @@ import java.time.ZonedDateTime
 data class FlourRecipe(
     val id: Int,
     val name: String,
-    val path: String?,
+    val imagePath: String,
     val lastCreateDate: ZonedDateTime,
     val createRecipeDate: ZonedDateTime,
     val recipeDetail: RecipeDetail,

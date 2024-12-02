@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.core.extensions.zoneddatetime
+package com.ghtoui.core.extensions.zoneddatetime
 
 import java.time.ZoneId
 import java.time.ZonedDateTime

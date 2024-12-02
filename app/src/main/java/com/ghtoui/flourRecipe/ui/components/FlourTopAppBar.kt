@@ -2,6 +2,7 @@ package com.ghtoui.flourRecipe.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -29,6 +30,7 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
  * @param backAble 戻れるボタンをつけるか
  * @param modifier [Modifier]
  * @param scrollBehavior スクロール時にトップバーを隠す
+ * @param actions 右側に表示する処理
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,6 +40,7 @@ internal fun FlourTopAppBar(
     modifier: Modifier = Modifier,
     scrollBehavior: TopAppBarScrollBehavior? = null,
     onBackClick: () -> Unit = {},
+    actions: @Composable RowScope.() -> Unit = {},
 ) {
     TopAppBar(
         modifier = modifier,
@@ -62,6 +65,7 @@ internal fun FlourTopAppBar(
             }
         },
         scrollBehavior = scrollBehavior,
+        actions = actions,
     )
 }
 

@@ -4,6 +4,9 @@
     <!--  content description  -->
     <string name="description_back_navigation">戻る</string>
     <string name="description_add_recipe">レシピを追加</string>
+    <string name="description_recipe_image">%sの完成画像</string>
+    <string name="description_favorite_select">お気に入りアイコン お気に入り済み</string>
+    <string name="description_favorite_un_select">お気に入りアイコン お気に入りではない</string>
 
     <!-- 共通 -->
     <string name="ingredient">材料</string>
@@ -20,5 +23,7 @@
     <string name="recipe_app_top_bar_title">レシピ</string>
     <string name="recipe_process">手順</string>
     <string name="recipe_memo">メモ</string>
+    <string name="recipe_reference">参考にしたもの</string>
+    <string name="recipe_reference_web_site">Webサイト</string>
 
 </resources>
