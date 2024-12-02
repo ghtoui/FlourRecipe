@@ -46,6 +46,7 @@ fun RecipeListItem(
     ) {
         FlourAsyncImage(
             modifier = Modifier
+                .clip(RoundedCornerShape(8.dp))
                 .height(48.dp)
                 .aspectRatio(1f),
             path = recipe.imagePath,
