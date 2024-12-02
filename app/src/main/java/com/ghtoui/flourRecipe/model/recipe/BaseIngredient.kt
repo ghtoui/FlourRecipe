@@ -10,10 +10,12 @@ package com.ghtoui.flourRecipe.model.recipe
  * @property name 名前
  * @property calorie カロリー
  * @property baseQuantity 基礎の量
+ * @property unit 単位
  */
 data class BaseIngredient(
     val id: Int,
     val name: String,
     val calorie: Int,
     val baseQuantity: Int,
+    val unit: String,
 )

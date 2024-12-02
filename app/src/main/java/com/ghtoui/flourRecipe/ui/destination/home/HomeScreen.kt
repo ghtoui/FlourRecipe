@@ -23,22 +23,29 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.ghtoui.flourRecipe.R
+import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
 import com.ghtoui.flourRecipe.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.components.RecipeListItem
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
+import com.ghtoui.flourRecipe.ui.destination.home.recipe.navigateToRecipe
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
 /**
  * ホーム画面
  */
 @Composable
-internal fun HomeScreen() {
+internal fun HomeScreen(
+    mainNavController: NavHostController = LocalMainNavController.current,
+) {
     HomeScreen(
         modifier = Modifier,
         recipes = getDummyRecipes(count = 20),
-        onRecipeClick = {},
+        onRecipeClick = {
+            mainNavController.navigateToRecipe(recipeId = it.id)
+        },
         backAble = false,
         onAddClick = {},
     )

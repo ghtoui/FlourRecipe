@@ -14,6 +14,38 @@ internal fun getDummyRecipes(count: Int = 5): List<FlourRecipe> {
     }
 }
 
+internal fun getDummyIngredients(): List<RecipeIngredient> = listOf(
+    RecipeIngredient(
+        baseIngredient = getBaseIngredient(1),
+        quantity = 100,
+    ),
+    RecipeIngredient(
+        baseIngredient = getBaseIngredient(2),
+        quantity = 100,
+    ),
+    RecipeIngredient(
+        baseIngredient = getBaseIngredient(3),
+        quantity = 100,
+    ),
+    RecipeIngredient(
+        baseIngredient = getBaseIngredient(4),
+        quantity = 100,
+    ),
+)
+
+internal fun getDummyProcess(): List<RecipeProcess> = listOf(
+    RecipeProcess(
+        name = "粉を入れます",
+        description = "小麦粉とドライイーストを入れます",
+        memo = "よく混ぜると良いです",
+    ),
+    RecipeProcess(
+        name = "水を入れます",
+        description = "よく混ぜた粉に水を入れます",
+        memo = null,
+    ),
+)
+
 private fun getFlourRecipe(id: Int): FlourRecipe = FlourRecipe(
     id = id,
     path = null,
@@ -29,36 +61,9 @@ private fun getFlourRecipe(id: Int): FlourRecipe = FlourRecipe(
 
 private fun getRecipeDetails(id: Int): RecipeDetail = RecipeDetail(
     id = id,
-    recipeProcess = listOf(
-        RecipeProcess(
-            name = "粉を入れます",
-            description = "小麦粉とドライイーストを入れます",
-            memo = "よく混ぜると良いです",
-        ),
-        RecipeProcess(
-            name = "水を入れます",
-            description = "よく混ぜた粉に水を入れます",
-            memo = null,
-        ),
-    ),
-    ingredients = listOf(
-        RecipeIngredient(
-            baseIngredient = getBaseIngredient(1),
-            quantity = 100,
-        ),
-        RecipeIngredient(
-            baseIngredient = getBaseIngredient(2),
-            quantity = 100,
-        ),
-        RecipeIngredient(
-            baseIngredient = getBaseIngredient(3),
-            quantity = 100,
-        ),
-        RecipeIngredient(
-            baseIngredient = getBaseIngredient(4),
-            quantity = 100,
-        ),
-    ),
+    recipeProcess = getDummyProcess(),
+    ingredients = getDummyIngredients(),
+    servings = 10,
 )
 
 private fun getBaseIngredient(id: Int): BaseIngredient {
@@ -73,5 +78,6 @@ private fun getBaseIngredient(id: Int): BaseIngredient {
         name = ingredientMap.keys.toList()[ingredientMap.keys.size % id],
         calorie = ingredientMap.values.toList()[ingredientMap.values.size % id],
         baseQuantity = 100,
+        unit = "g",
     )
 }

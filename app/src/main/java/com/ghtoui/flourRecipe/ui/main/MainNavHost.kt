@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
 import com.ghtoui.flourRecipe.ui.destination.home.HomeScreenRoute
 import com.ghtoui.flourRecipe.ui.destination.home.homeScreen
+import com.ghtoui.flourRecipe.ui.destination.home.recipe.recipeScreen
 import com.ghtoui.flourRecipe.ui.destination.settings.settingsScreen
 
 @Composable
@@ -21,5 +22,6 @@ fun MainNavHost(
     ) {
         homeScreen()
         settingsScreen()
+        recipeScreen()
     }
 }
