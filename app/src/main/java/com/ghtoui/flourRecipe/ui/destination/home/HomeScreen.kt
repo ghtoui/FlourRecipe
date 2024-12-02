@@ -23,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
@@ -39,6 +40,7 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 @Composable
 internal fun HomeScreen(
     mainNavController: NavHostController = LocalMainNavController.current,
+    viewModel: HomeScreenViewModel = hiltViewModel(),
 ) {
     HomeScreen(
         modifier = Modifier,
