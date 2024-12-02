@@ -15,20 +15,20 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 internal fun QuantityText(
     quantity: Int,
     unit: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Row(
-        modifier = modifier
+        modifier = modifier,
     ) {
         Text(
             modifier = Modifier.alignByBaseline(),
             text = "$quantity",
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
         )
         Text(
             modifier = Modifier.alignByBaseline(),
             text = unit,
-            style = MaterialTheme.typography.labelSmall
+            style = MaterialTheme.typography.labelSmall,
         )
     }
 }
@@ -36,7 +36,7 @@ internal fun QuantityText(
 @Preview
 @Composable
 private fun QuantityTextPreview(
-    @PreviewParameter(QuantityTextPreviewPPP::class) param: QuantityTextPreviewPPP.Param
+    @PreviewParameter(QuantityTextPreviewPPP::class) param: QuantityTextPreviewPPP.Param,
 ) {
     FlourRecipeTheme {
         Surface {
@@ -51,17 +51,17 @@ private fun QuantityTextPreview(
 private class QuantityTextPreviewPPP : CollectionPreviewParameterProvider<QuantityTextPreviewPPP.Param>(
     listOf(
         Param(
-            unit = "g"
+            unit = "g",
         ),
         Param(
-            unit = "cm"
+            unit = "cm",
         ),
         Param(
-            unit = "個"
+            unit = "個",
         ),
-    )
+    ),
 ) {
     data class Param(
-        val unit: String
+        val unit: String,
     )
 }

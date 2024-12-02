@@ -38,7 +38,7 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
  */
 @Composable
 internal fun HomeScreen(
-    mainNavController: NavHostController = LocalMainNavController.current
+    mainNavController: NavHostController = LocalMainNavController.current,
 ) {
     HomeScreen(
         modifier = Modifier,

@@ -54,7 +54,7 @@ internal fun FlourTopAppBar(
                         .clip(RoundedCornerShape(12.dp))
                         .clickable(
                             role = Role.Button,
-                            onClick = onBackClick
+                            onClick = onBackClick,
                         ),
                     painter = painterResource(id = R.drawable.ic_back),
                     contentDescription = stringResource(id = R.string.description_back_navigation),

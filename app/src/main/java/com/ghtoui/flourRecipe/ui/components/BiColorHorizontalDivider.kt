@@ -14,13 +14,12 @@ import androidx.compose.ui.Modifier
 @Composable
 internal fun BiColorHorizontalDivider(modifier: Modifier = Modifier) {
     Row(
-        modifier = modifier
+        modifier = modifier,
     ) {
         HorizontalDivider(
             modifier = Modifier.weight(1f),
-            color = MaterialTheme.colorScheme.primary
+            color = MaterialTheme.colorScheme.primary,
         )
         HorizontalDivider(modifier = Modifier.weight(2f))
     }
 }
-

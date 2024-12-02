@@ -27,15 +27,18 @@ import com.ghtoui.flourRecipe.ui.destination.home.recipe.components.IngredientCo
 import com.ghtoui.flourRecipe.ui.destination.home.recipe.components.ProcessContent
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
+/**
+ * レシピ画面
+ */
 @Composable
 internal fun RecipeScreen(
-    mainNavController: NavHostController = LocalMainNavController.current
+    mainNavController: NavHostController = LocalMainNavController.current,
 ) {
     RecipeScreen(
         modifier = Modifier,
         recipeDetail = getDummyRecipes().first().recipeDetail,
         backAble = true,
-        onBackClick = mainNavController::popBackStack
+        onBackClick = mainNavController::popBackStack,
     )
 }
 
@@ -45,7 +48,7 @@ private fun RecipeScreen(
     recipeDetail: RecipeDetail,
     backAble: Boolean,
     onBackClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val scrollState = rememberScrollState()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
@@ -56,23 +59,23 @@ private fun RecipeScreen(
                 title = stringResource(id = R.string.recipe_app_top_bar_title),
                 backAble = backAble,
                 scrollBehavior = scrollBehavior,
-                onBackClick = onBackClick
+                onBackClick = onBackClick,
             )
-        }
+        },
     ) { innerPadding ->
         Column(
             modifier = Modifier
                 .verticalScroll(scrollState)
                 .padding(
-                    top = innerPadding.calculateTopPadding()
+                    top = innerPadding.calculateTopPadding(),
                 )
                 .padding(horizontal = 24.dp)
-                .nestedScroll(scrollBehavior.nestedScrollConnection)
+                .nestedScroll(scrollBehavior.nestedScrollConnection),
         ) {
             IngredientContent(
                 modifier = Modifier.fillMaxWidth(),
                 recipeIngredients = recipeDetail.ingredients,
-                servings = 10
+                servings = 10,
             )
             Spacer(modifier = Modifier.height(24.dp))
             ProcessContent(

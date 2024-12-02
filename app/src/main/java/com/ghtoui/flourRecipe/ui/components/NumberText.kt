@@ -29,7 +29,7 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 @Composable
 internal fun NumberText(
     number: Int,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val textStyle = MaterialTheme.typography.titleLarge
     val circleSize = rememberSaveable {
@@ -40,7 +40,7 @@ internal fun NumberText(
             .size(circleSize.intValue.dp)
             .clip(CircleShape)
             .background(MaterialTheme.colorScheme.primaryContainer),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         Text(
             modifier = Modifier

@@ -33,41 +33,40 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 internal fun ProcessItem(
     index: Int,
     recipeProcess: RecipeProcess,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier
+        modifier = modifier,
     ) {
         Row {
             NumberText(number = index)
             Spacer(modifier = Modifier.width(16.dp))
             ProcessDescription(
                 modifier = Modifier.padding(top = 6.dp),
-                recipeProcess = recipeProcess
+                recipeProcess = recipeProcess,
             )
         }
         recipeProcess.memo?.let {
             Spacer(modifier = Modifier.height(12.dp))
             ProcessMemo(
                 modifier = Modifier.fillMaxWidth(),
-                memo = it
+                memo = it,
             )
         }
-
     }
 }
 
 @Composable
 private fun ProcessDescription(
     recipeProcess: RecipeProcess,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier
+        modifier = modifier,
     ) {
         Text(
             text = recipeProcess.name,
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
@@ -80,15 +79,15 @@ private fun ProcessDescription(
 @Composable
 private fun ProcessMemo(
     memo: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     TitleBorderBox(
         modifier = modifier,
-        topTitle = stringResource(id = R.string.recipe_memo)
+        topTitle = stringResource(id = R.string.recipe_memo),
     ) {
         Text(
             text = memo,
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
         )
     }
 }

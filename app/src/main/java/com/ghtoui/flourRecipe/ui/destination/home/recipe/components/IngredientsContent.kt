@@ -34,13 +34,13 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 internal fun IngredientContent(
     servings: Int,
     recipeIngredients: List<RecipeIngredient>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier
+        modifier = modifier,
     ) {
         IngredientTitle(
-            servings = servings
+            servings = servings,
         )
         Spacer(modifier = Modifier.height(16.dp))
         recipeIngredients.forEach { recipeIngredient ->
@@ -49,7 +49,7 @@ internal fun IngredientContent(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp),
-                    recipeIngredient = recipeIngredient
+                    recipeIngredient = recipeIngredient,
                 )
                 HorizontalDivider()
             }
@@ -60,13 +60,13 @@ internal fun IngredientContent(
 @Composable
 private fun IngredientTitle(
     servings: Int,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column {
         Row(
             modifier = modifier
                 .padding(vertical = 4.dp),
-            verticalAlignment = Alignment.Bottom
+            verticalAlignment = Alignment.Bottom,
         ) {
             Text(
                 text = stringResource(id = R.string.ingredient),
@@ -77,7 +77,7 @@ private fun IngredientTitle(
                 Text(
                     modifier = Modifier.alignByBaseline(),
                     text = "$servings",
-                    style = MaterialTheme.typography.bodyLarge
+                    style = MaterialTheme.typography.bodyLarge,
                 )
                 Text(
                     modifier = Modifier.alignByBaseline(),

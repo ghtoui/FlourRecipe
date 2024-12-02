@@ -25,15 +25,15 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 @Composable
 internal fun IngredientItem(
     recipeIngredient: RecipeIngredient,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
             text = recipeIngredient.baseIngredient.name,
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
         )
         Spacer(modifier = Modifier.weight(1f))
         QuantityText(
@@ -51,7 +51,7 @@ private fun IngredientItemPreview() {
         Surface {
             IngredientItem(
                 modifier = Modifier.width(100.dp),
-                recipeIngredient = dummyIngredient
+                recipeIngredient = dummyIngredient,
             )
         }
     }

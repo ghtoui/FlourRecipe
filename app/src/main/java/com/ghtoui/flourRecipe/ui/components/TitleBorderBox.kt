@@ -32,7 +32,7 @@ internal fun TitleBorderBox(
         mutableIntStateOf(0)
     }
     Box(
-        modifier = Modifier
+        modifier = Modifier,
     ) {
         Box(
             modifier = modifier
@@ -40,9 +40,9 @@ internal fun TitleBorderBox(
                 .border(
                     width = 2.dp,
                     color = MaterialTheme.colorScheme.secondaryContainer,
-                    shape = RoundedCornerShape(24.dp)
+                    shape = RoundedCornerShape(24.dp),
                 )
-                .padding(horizontal = 12.dp, vertical = 30.dp)
+                .padding(horizontal = 12.dp, vertical = 30.dp),
         ) {
             content.invoke()
         }
@@ -51,18 +51,17 @@ internal fun TitleBorderBox(
                 .padding(start = 40.dp)
                 .background(
                     color = MaterialTheme.colorScheme.secondaryContainer,
-                    shape = RoundedCornerShape(24.dp)
+                    shape = RoundedCornerShape(24.dp),
                 )
                 .padding(horizontal = 18.dp, vertical = 4.dp)
                 .onGloballyPositioned {
-                     titleHeight.intValue = it.size.height / 2
+                    titleHeight.intValue = it.size.height / 2
                 },
             text = topTitle,
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onSecondary,
         )
     }
-
 }
 
 @Preview

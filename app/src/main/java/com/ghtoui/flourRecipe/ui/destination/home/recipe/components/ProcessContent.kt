@@ -20,13 +20,19 @@ import com.ghtoui.flourRecipe.ui.components.BiColorHorizontalDivider
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyProcess
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
+/**
+ * レシピの手順コンテンツ
+ *
+ * @param recipeProcess 手順
+ * @param modifier [Modifier]
+ */
 @Composable
 internal fun ProcessContent(
     recipeProcess: List<RecipeProcess>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier
+        modifier = modifier,
     ) {
         RecipeTitle()
         Spacer(modifier = Modifier.height(16.dp))
@@ -44,11 +50,11 @@ internal fun ProcessContent(
 @Composable
 private fun RecipeTitle(modifier: Modifier = Modifier) {
     Column(
-        modifier = modifier
+        modifier = modifier,
     ) {
         Text(
             text = stringResource(id = R.string.recipe_process),
-            style = MaterialTheme.typography.headlineLarge
+            style = MaterialTheme.typography.headlineLarge,
         )
         BiColorHorizontalDivider(modifier = Modifier.fillMaxWidth())
     }
