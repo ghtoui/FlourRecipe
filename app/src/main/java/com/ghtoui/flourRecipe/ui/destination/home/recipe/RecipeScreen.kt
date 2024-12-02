@@ -44,7 +44,7 @@ internal fun RecipeScreen(
         backAble = true,
         onBackClick = mainNavController::popBackStack,
         onReferenceURLClick = {},
-        onFavoriteClick = {}
+        onFavoriteClick = {},
     )
 }
 
@@ -71,7 +71,7 @@ private fun RecipeScreen(
             ) {
                 FavoriteIconButton(
                     isFavorite = recipe.isFavorite,
-                    onFavoriteClick = onFavoriteClick
+                    onFavoriteClick = onFavoriteClick,
                 )
             }
         },

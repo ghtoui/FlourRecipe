@@ -46,9 +46,9 @@ internal fun FavoriteIconButton(
                 indication = ripple(
                     color = MaterialTheme.colorScheme.error,
                     radius = iconSize,
-                    bounded = false
+                    bounded = false,
                 ),
-                role = Role.Button
+                role = Role.Button,
             ),
         contentAlignment = Alignment.Center,
     ) {
@@ -71,7 +71,7 @@ internal fun FavoriteIconButton(
 @Preview
 @Composable
 private fun FavoriteIconPreview(
-    @PreviewParameter(FavoriteIconPreviewPPP::class) param: FavoriteIconPreviewPPP.Param
+    @PreviewParameter(FavoriteIconPreviewPPP::class) param: FavoriteIconPreviewPPP.Param,
 ) {
     FlourRecipeTheme {
         Surface {
@@ -88,9 +88,9 @@ private class FavoriteIconPreviewPPP :
         listOf(
             Param(false),
             Param(true),
-        )
+        ),
     ) {
     data class Param(
-        val isFavorite: Boolean
+        val isFavorite: Boolean,
     )
 }

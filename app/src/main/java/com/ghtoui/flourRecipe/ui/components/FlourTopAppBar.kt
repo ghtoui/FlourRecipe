@@ -65,7 +65,7 @@ internal fun FlourTopAppBar(
             }
         },
         scrollBehavior = scrollBehavior,
-        actions = actions
+        actions = actions,
     )
 }
 
