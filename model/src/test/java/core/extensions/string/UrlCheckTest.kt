@@ -1,4 +1,4 @@
-package core
+package core.extensions.string
 
 import com.ghtoui.core.extensions.string.isURL
 import com.google.common.truth.Truth.assertThat

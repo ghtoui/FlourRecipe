@@ -6,9 +6,9 @@ package com.ghtoui.core.extensions.string
  * @return [Boolean]
  */
 val String.isURL: Boolean
-    get()= URL_START_PATTERN
+    get() = URL_START_PATTERN
         .containsMatchIn(this)
 
 private val URL_START_PATTERN = Regex(
-    pattern = "^https?://"
+    pattern = "^https?://",
 )
