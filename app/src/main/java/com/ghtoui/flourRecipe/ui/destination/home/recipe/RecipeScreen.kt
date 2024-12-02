@@ -20,11 +20,13 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
-import com.ghtoui.flourRecipe.model.recipe.RecipeDetail
+import com.ghtoui.flourRecipe.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
 import com.ghtoui.flourRecipe.ui.destination.home.recipe.components.IngredientContent
 import com.ghtoui.flourRecipe.ui.destination.home.recipe.components.ProcessContent
+import com.ghtoui.flourRecipe.ui.destination.home.recipe.components.RecipeImage
+import com.ghtoui.flourRecipe.ui.destination.home.recipe.components.ReferenceContent
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
 /**
@@ -36,7 +38,7 @@ internal fun RecipeScreen(
 ) {
     RecipeScreen(
         modifier = Modifier,
-        recipeDetail = getDummyRecipes().first().recipeDetail,
+        recipe = getDummyRecipes().first(),
         backAble = true,
         onBackClick = mainNavController::popBackStack,
     )
@@ -45,7 +47,7 @@ internal fun RecipeScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun RecipeScreen(
-    recipeDetail: RecipeDetail,
+    recipe: FlourRecipe,
     backAble: Boolean,
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -70,18 +72,36 @@ private fun RecipeScreen(
                     top = innerPadding.calculateTopPadding(),
                 )
                 .padding(horizontal = 24.dp)
+                .padding(bottom = 24.dp)
                 .nestedScroll(scrollBehavior.nestedScrollConnection),
         ) {
+            RecipeImage(
+                modifier = Modifier.fillMaxWidth(),
+                imagePath = recipe.imagePath,
+                recipeName = recipe.name
+            )
+            Spacer(modifier = Modifier.height(24.dp))
             IngredientContent(
                 modifier = Modifier.fillMaxWidth(),
-                recipeIngredients = recipeDetail.ingredients,
+                recipeIngredients = recipe.recipeDetail.ingredients,
                 servings = 10,
             )
             Spacer(modifier = Modifier.height(24.dp))
             ProcessContent(
                 modifier = Modifier.fillMaxWidth(),
-                recipeProcess = recipeDetail.recipeProcess,
+                recipeProcess = recipe.recipeDetail.recipeProcess,
             )
+            if (recipe.recipeDetail.references.isNotEmpty()) {
+                Spacer(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(40.dp)
+                )
+                ReferenceContent(
+                    references = recipe.recipeDetail.references,
+                    onReferenceURLClick = {}
+                )
+            }
         }
     }
 }
@@ -89,12 +109,12 @@ private fun RecipeScreen(
 @Preview
 @Composable
 private fun RecipeScreenPreview() {
-    val dummyRecipeDetail = getDummyRecipes().first().recipeDetail
+    val dummyRecipe = getDummyRecipes().first()
     FlourRecipeTheme {
         Surface {
             RecipeScreen(
                 modifier = Modifier,
-                recipeDetail = dummyRecipeDetail,
+                recipe = dummyRecipe,
                 backAble = true,
                 onBackClick = {},
             )

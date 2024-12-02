@@ -44,11 +44,16 @@ internal fun getDummyProcess(): List<RecipeProcess> = listOf(
         description = "よく混ぜた粉に水を入れます",
         memo = null,
     ),
+    RecipeProcess(
+        name = "こねる",
+        description = "手につかなくなるまでこねます",
+        memo = "コネ板を使って，伸ばすようにこねると良い",
+    ),
 )
 
 private fun getFlourRecipe(id: Int): FlourRecipe = FlourRecipe(
     id = id,
-    path = null,
+    imagePath = "",
     name = "パン_$id",
     count = 10,
     createRecipeDate = ZonedDateTime.now(),
@@ -56,14 +61,19 @@ private fun getFlourRecipe(id: Int): FlourRecipe = FlourRecipe(
     recipeCategory = RecipeCategory.Noodle,
     createTime = if (id % 2 == 0) 10 else null,
     isFavorite = id % 2 == 0,
-    recipeDetail = getRecipeDetails(id),
+    recipeDetail = getRecipeDetails(),
 )
 
-private fun getRecipeDetails(id: Int): RecipeDetail = RecipeDetail(
-    id = id,
+private fun getRecipeDetails(): RecipeDetail = RecipeDetail(
     recipeProcess = getDummyProcess(),
     ingredients = getDummyIngredients(),
     servings = 10,
+    references = listOf(
+        "https://example.com",
+        "パン作りの本 2ページ目",
+        "パン作りの本 3ページ目",
+        "パン作りの本 4ページ目",
+    )
 )
 
 private fun getBaseIngredient(id: Int): BaseIngredient {

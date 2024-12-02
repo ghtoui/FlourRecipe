@@ -42,12 +42,12 @@ internal fun ProcessItem(
             NumberText(number = index)
             Spacer(modifier = Modifier.width(16.dp))
             ProcessDescription(
-                modifier = Modifier.padding(top = 6.dp),
+                modifier = Modifier.padding(top = 2.dp),
                 recipeProcess = recipeProcess,
             )
         }
         recipeProcess.memo?.let {
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(24.dp))
             ProcessMemo(
                 modifier = Modifier.fillMaxWidth(),
                 memo = it,

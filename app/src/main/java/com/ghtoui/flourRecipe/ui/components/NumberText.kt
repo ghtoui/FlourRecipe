@@ -31,7 +31,7 @@ internal fun NumberText(
     number: Int,
     modifier: Modifier = Modifier,
 ) {
-    val textStyle = MaterialTheme.typography.titleLarge
+    val textStyle = MaterialTheme.typography.bodyLarge
     val circleSize = rememberSaveable {
         mutableIntStateOf(textStyle.fontSize.value.toInt() * 2)
     }
@@ -50,7 +50,7 @@ internal fun NumberText(
                 .padding(4.dp),
             text = "$number",
             style = textStyle,
-            color = MaterialTheme.colorScheme.onPrimary,
+            color = MaterialTheme.colorScheme.onPrimaryContainer,
         )
     }
 }
