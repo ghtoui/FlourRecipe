@@ -5,6 +5,8 @@
     <string name="description_back_navigation">戻る</string>
     <string name="description_add_recipe">レシピを追加</string>
     <string name="description_recipe_image">%sの完成画像</string>
+    <string name="description_favorite_select">お気に入りアイコン お気に入り済み</string>
+    <string name="description_favorite_un_select">お気に入りアイコン お気に入りではない</string>
 
     <!-- 共通 -->
     <string name="ingredient">材料</string>

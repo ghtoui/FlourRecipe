@@ -65,7 +65,7 @@ internal fun TitleBorderBox(
                     with(current) {
                         titleHeight.value = (it.size.height / 2).toDp()
                     }
-                }
+                },
         ) {
             Text(
                 text = topTitle,

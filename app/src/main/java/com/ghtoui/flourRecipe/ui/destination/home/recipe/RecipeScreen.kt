@@ -21,6 +21,7 @@ import androidx.navigation.NavHostController
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
 import com.ghtoui.flourRecipe.model.recipe.FlourRecipe
+import com.ghtoui.flourRecipe.ui.components.FavoriteIconButton
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
 import com.ghtoui.flourRecipe.ui.destination.home.recipe.components.IngredientContent
@@ -28,6 +29,7 @@ import com.ghtoui.flourRecipe.ui.destination.home.recipe.components.ProcessConte
 import com.ghtoui.flourRecipe.ui.destination.home.recipe.components.RecipeImage
 import com.ghtoui.flourRecipe.ui.destination.home.recipe.components.ReferenceContent
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
+import java.net.URL
 
 /**
  * レシピ画面
@@ -41,6 +43,8 @@ internal fun RecipeScreen(
         recipe = getDummyRecipes().first(),
         backAble = true,
         onBackClick = mainNavController::popBackStack,
+        onReferenceURLClick = {},
+        onFavoriteClick = {}
     )
 }
 
@@ -50,6 +54,8 @@ private fun RecipeScreen(
     recipe: FlourRecipe,
     backAble: Boolean,
     onBackClick: () -> Unit,
+    onReferenceURLClick: (URL) -> Unit,
+    onFavoriteClick: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val scrollState = rememberScrollState()
@@ -62,23 +68,28 @@ private fun RecipeScreen(
                 backAble = backAble,
                 scrollBehavior = scrollBehavior,
                 onBackClick = onBackClick,
-            )
+            ) {
+                FavoriteIconButton(
+                    isFavorite = recipe.isFavorite,
+                    onFavoriteClick = onFavoriteClick
+                )
+            }
         },
     ) { innerPadding ->
         Column(
             modifier = Modifier
+                .nestedScroll(scrollBehavior.nestedScrollConnection)
                 .verticalScroll(scrollState)
                 .padding(
                     top = innerPadding.calculateTopPadding(),
                 )
                 .padding(horizontal = 24.dp)
-                .padding(bottom = 24.dp)
-                .nestedScroll(scrollBehavior.nestedScrollConnection),
+                .padding(bottom = 24.dp),
         ) {
             RecipeImage(
                 modifier = Modifier.fillMaxWidth(),
                 imagePath = recipe.imagePath,
-                recipeName = recipe.name
+                recipeName = recipe.name,
             )
             Spacer(modifier = Modifier.height(24.dp))
             IngredientContent(
@@ -95,11 +106,11 @@ private fun RecipeScreen(
                 Spacer(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(40.dp)
+                        .height(40.dp),
                 )
                 ReferenceContent(
                     references = recipe.recipeDetail.references,
-                    onReferenceURLClick = {}
+                    onReferenceURLClick = onReferenceURLClick,
                 )
             }
         }
@@ -117,6 +128,8 @@ private fun RecipeScreenPreview() {
                 recipe = dummyRecipe,
                 backAble = true,
                 onBackClick = {},
+                onReferenceURLClick = {},
+                onFavoriteClick = {},
             )
         }
     }

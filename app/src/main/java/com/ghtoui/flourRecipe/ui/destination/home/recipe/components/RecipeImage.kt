@@ -23,7 +23,7 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 internal fun RecipeImage(
     imagePath: String,
     recipeName: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     FlourAsyncImage(
         modifier = modifier
@@ -31,8 +31,8 @@ internal fun RecipeImage(
         path = imagePath,
         contentDescription = stringResource(
             id = R.string.description_recipe_image,
-            recipeName
-        )
+            recipeName,
+        ),
     )
 }
 
@@ -44,7 +44,7 @@ private fun RecipeImagePreview() {
             RecipeImage(
                 modifier = Modifier.size(100.dp),
                 imagePath = "https://example.com",
-                recipeName = "パン"
+                recipeName = "パン",
             )
         }
     }

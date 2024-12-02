@@ -73,7 +73,7 @@ private fun getRecipeDetails(): RecipeDetail = RecipeDetail(
         "パン作りの本 2ページ目",
         "パン作りの本 3ページ目",
         "パン作りの本 4ページ目",
-    )
+    ),
 )
 
 private fun getBaseIngredient(id: Int): BaseIngredient {

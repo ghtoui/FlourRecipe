@@ -41,7 +41,7 @@ import java.net.URL
 internal fun ReferenceContent(
     references: List<String>,
     onReferenceURLClick: (URL) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier,
@@ -53,16 +53,16 @@ internal fun ReferenceContent(
         BiColorHorizontalDivider()
         Spacer(modifier = Modifier.height(16.dp))
         Column(
-            verticalArrangement = Arrangement.spacedBy(4.dp)
+            verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
             references.forEach { reference ->
                 if (reference.isURL) {
                     ReferenceURLItem(
                         onReferenceURLClick = {
                             onReferenceURLClick(
-                                URL(reference)
+                                URL(reference),
                             )
-                        }
+                        },
                     )
                 } else {
                     ReferenceItem(
@@ -77,25 +77,25 @@ internal fun ReferenceContent(
 @Composable
 private fun ReferenceURLItem(
     onReferenceURLClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(24.dp))
             .clickable {
                 onReferenceURLClick()
-            }
+            },
     ) {
         Column(
-            Modifier.width(IntrinsicSize.Max)
+            Modifier.width(IntrinsicSize.Max),
         ) {
             Row(
                 modifier = Modifier.padding(horizontal = 12.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.ic_link),
-                    contentDescription = null
+                    contentDescription = null,
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
@@ -111,7 +111,7 @@ private fun ReferenceURLItem(
 @Composable
 private fun ReferenceItem(
     reference: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Text(
         modifier = modifier,

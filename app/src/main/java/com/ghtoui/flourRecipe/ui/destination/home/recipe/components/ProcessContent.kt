@@ -42,7 +42,8 @@ internal fun ProcessContent(
             recipeProcess.forEachIndexed { index, recipeProcess ->
                 // 1始まりにする
                 ProcessItem(
-                    index = index + 1, recipeProcess = recipeProcess
+                    index = index + 1,
+                    recipeProcess = recipeProcess,
                 )
                 HorizontalDivider()
             }
