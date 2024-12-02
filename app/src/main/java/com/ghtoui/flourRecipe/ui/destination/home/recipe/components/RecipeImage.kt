@@ -12,6 +12,13 @@ import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.ui.components.FlourAsyncImage
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
+/**
+ * レシピの完成画像
+ *
+ * @param imagePath 画像のパス
+ * @param recipeName レシピの名前
+ * @param modifier [Modifier]
+ */
 @Composable
 internal fun RecipeImage(
     imagePath: String,
