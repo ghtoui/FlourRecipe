@@ -1,5 +1,6 @@
 package com.ghtoui.flourRecipe.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -35,12 +36,13 @@ fun FlourAsyncImage(
     ),
 ) {
     AsyncImage(
-        modifier = modifier,
+        modifier = modifier
+            .background(MaterialTheme.colorScheme.surfaceTint),
         model = path,
         contentDescription = contentDescription,
         contentScale = contentScale,
         placeholder = placeholder,
-        error = painterResource(id = R.drawable.ic_bread),
+        error = painterResource(id = R.drawable.ic_flour),
     )
 }
 

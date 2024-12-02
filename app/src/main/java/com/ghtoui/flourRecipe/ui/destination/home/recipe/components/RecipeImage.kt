@@ -2,9 +2,11 @@ package com.ghtoui.flourRecipe.ui.destination.home.recipe.components
 
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -27,6 +29,7 @@ internal fun RecipeImage(
 ) {
     FlourAsyncImage(
         modifier = modifier
+            .clip(RoundedCornerShape(8.dp))
             .aspectRatio(16f / 9f),
         path = imagePath,
         contentDescription = stringResource(
