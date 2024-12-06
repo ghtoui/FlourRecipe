@@ -1,4 +1,4 @@
-package com.ghtoui.model.repository
+package com.ghtoui.domain.repository
 
 import com.ghtoui.flourRecipe.model.recipe.FlourRecipe
 

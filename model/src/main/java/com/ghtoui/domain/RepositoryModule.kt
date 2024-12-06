@@ -1,7 +1,7 @@
-package com.ghtoui.model
+package com.ghtoui.domain
 
-import com.ghtoui.model.impl.FlourRecipeRepositoryImpl
-import com.ghtoui.model.repository.FlourRecipeRepository
+import com.ghtoui.domain.impl.FlourRecipeRepositoryImpl
+import com.ghtoui.domain.repository.FlourRecipeRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
