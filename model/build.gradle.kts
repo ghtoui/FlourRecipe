@@ -44,8 +44,6 @@ ksp {
 }
 
 dependencies {
-    implementation(project(":app"))
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -57,10 +55,10 @@ dependencies {
 
     // hilt
     implementation(libs.hilt.android)
-    implementation(libs.hilt.navigation.compose)
     ksp(libs.hilt.compiler)
 
     // room
     implementation(libs.room)
+    implementation(libs.room.kotlin)
     ksp(libs.room.compiler)
 }

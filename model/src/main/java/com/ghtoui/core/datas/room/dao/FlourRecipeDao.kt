@@ -5,12 +5,12 @@ import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Upsert
-import com.ghtoui.domain.model.recipe.FlourRecipe
-import com.ghtoui.domain.model.recipe.FlourRecipeDetailRelation
+import com.ghtoui.core.datas.model.recipe.FlourRecipe
+import com.ghtoui.core.datas.model.recipe.FlourRecipeDetailRelation
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface FlourRecipeDao {
+internal interface FlourRecipeDao {
     /**
      * 全てのレシピを取得する
      *
@@ -26,9 +26,9 @@ interface FlourRecipeDao {
      * @param id ID
      * @return [Flow]<[FlourRecipeDetailRelation]>
      */
-    @Transaction
-    @Query("SELECT * FROM FlourRecipe WHERE recipeId IN (:id)")
-    fun getFlourRecipeWithDetail(id: Int): Flow<FlourRecipeDetailRelation>
+//    @Transaction
+//    @Query("SELECT * FROM FlourRecipe WHERE recipeId IN (:id)")
+//    fun getFlourRecipeWithDetail(id: Int): Flow<FlourRecipeDetailRelation>
 
     /**
      * レシピを保存

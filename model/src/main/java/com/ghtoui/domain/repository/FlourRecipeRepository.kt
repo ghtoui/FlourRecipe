@@ -1,6 +1,6 @@
 package com.ghtoui.domain.repository
 
-import com.ghtoui.flourRecipe.model.recipe.FlourRecipe
+import com.ghtoui.domain.model.recipe.FlourRecipe
 import kotlinx.coroutines.flow.Flow
 
 /**

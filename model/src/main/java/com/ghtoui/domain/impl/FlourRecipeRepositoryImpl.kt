@@ -1,13 +1,13 @@
 package com.ghtoui.domain.impl
 
 import com.ghtoui.core.datas.room.dao.FlourRecipeDao
+import com.ghtoui.domain.model.recipe.FlourRecipe
 import com.ghtoui.domain.repository.FlourRecipeRepository
-import com.ghtoui.flourRecipe.model.recipe.FlourRecipe
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class FlourRecipeRepositoryImpl @Inject constructor(
+internal class FlourRecipeRepositoryImpl @Inject constructor(
     private val flourRecipeDao: FlourRecipeDao
 ) : FlourRecipeRepository {
     override suspend fun getRecipeList(): Flow<List<FlourRecipe>> {

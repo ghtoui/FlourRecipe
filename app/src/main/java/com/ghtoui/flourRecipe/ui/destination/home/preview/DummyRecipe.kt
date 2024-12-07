@@ -1,11 +1,11 @@
 package com.ghtoui.flourRecipe.ui.destination.home.preview
 
-import com.ghtoui.flourRecipe.model.recipe.BaseIngredient
-import com.ghtoui.flourRecipe.model.recipe.FlourRecipe
-import com.ghtoui.flourRecipe.model.recipe.RecipeCategory
-import com.ghtoui.flourRecipe.model.recipe.RecipeDetail
-import com.ghtoui.flourRecipe.model.recipe.RecipeIngredient
-import com.ghtoui.flourRecipe.model.recipe.RecipeProcess
+import com.ghtoui.domain.model.recipe.BaseIngredient
+import com.ghtoui.domain.model.recipe.FlourRecipe
+import com.ghtoui.domain.model.recipe.RecipeCategory
+import com.ghtoui.domain.model.recipe.RecipeDetail
+import com.ghtoui.domain.model.recipe.RecipeIngredient
+import com.ghtoui.domain.model.recipe.RecipeProcess
 import java.time.ZonedDateTime
 
 internal fun getDummyRecipes(count: Int = 5): List<FlourRecipe> {

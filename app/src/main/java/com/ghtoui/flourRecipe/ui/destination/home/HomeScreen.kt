@@ -27,7 +27,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
-import com.ghtoui.flourRecipe.model.recipe.FlourRecipe
+import com.ghtoui.domain.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.components.RecipeListItem
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes

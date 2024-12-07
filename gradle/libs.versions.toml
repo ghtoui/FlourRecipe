@@ -58,6 +58,7 @@ hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-com
 # room
 room = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-kotlin = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

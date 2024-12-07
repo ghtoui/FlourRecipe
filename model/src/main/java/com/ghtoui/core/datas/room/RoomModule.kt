@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RoomModule {
+internal object RoomModule {
     @Singleton
     @Provides
     fun provideDatabase(
