@@ -1,6 +1,7 @@
 package com.ghtoui.domain.repository
 
 import com.ghtoui.flourRecipe.model.recipe.FlourRecipe
+import kotlinx.coroutines.flow.Flow
 
 /**
  * レシピのリポジトリ
@@ -9,12 +10,12 @@ interface FlourRecipeRepository {
     /**
      * レシピ一覧取得
      *
-     * @return [Result]<[List]<[FlourRecipe]>>
+     * @return [Flow]<[List]<[FlourRecipe]>>
      */
-    suspend fun getRecipeList(): Result<List<FlourRecipe>>
+    suspend fun getRecipeList(): Flow<List<FlourRecipe>>
 
     /**
      * レシピ保存
      */
-    suspend fun saveRecipe(): Result<Unit>
+    suspend fun saveRecipe(flourRecipe: FlourRecipe): Result<Unit>
 }
