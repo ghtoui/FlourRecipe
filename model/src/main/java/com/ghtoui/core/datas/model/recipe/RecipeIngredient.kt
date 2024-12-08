@@ -29,8 +29,8 @@ import androidx.room.PrimaryKey
             entity = BaseIngredient::class,
             parentColumns = ["baseIngredientId"],
             childColumns = ["baseIngredientId"],
-        )
-    ]
+        ),
+    ],
 )
 internal data class RecipeIngredient(
     @PrimaryKey(autoGenerate = true) val recipeIngredientId: Int = 0,

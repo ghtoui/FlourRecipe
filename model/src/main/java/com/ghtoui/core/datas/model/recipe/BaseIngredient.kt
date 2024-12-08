@@ -22,9 +22,9 @@ import androidx.room.PrimaryKey
             entity = BaseIngredient::class,
             parentColumns = ["baseIngredientId"],
             childColumns = ["baseIngredientId"],
-            onDelete = ForeignKey.RESTRICT
-        )
-    ]
+            onDelete = ForeignKey.RESTRICT,
+        ),
+    ],
 )
 internal data class BaseIngredient(
     @PrimaryKey(autoGenerate = true) val baseIngredientId: Int = 0,

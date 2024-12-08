@@ -9,13 +9,13 @@ internal data class IngredientWithBase(
     @Relation(
         parentColumn = "baseIngredientId",
         entityColumn = "baseIngredientId",
-        associateBy = Junction(RecipeIngredient::class)
+        associateBy = Junction(RecipeIngredient::class),
     )
     val baseIngredient: BaseIngredient,
 ) {
     fun toDomain(): com.ghtoui.domain.model.recipe.RecipeIngredient =
         com.ghtoui.domain.model.recipe.RecipeIngredient(
             baseIngredient = baseIngredient.toDomain(),
-            quantity = ingredient.quantity
+            quantity = ingredient.quantity,
         )
 }

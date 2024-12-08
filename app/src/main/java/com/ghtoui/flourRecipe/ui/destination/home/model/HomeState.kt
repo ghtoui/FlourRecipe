@@ -8,11 +8,11 @@ import com.ghtoui.domain.model.recipe.FlourRecipe
  * @property flourRecipes レシピのリスト
  */
 internal data class HomeState(
-    val flourRecipes: List<FlourRecipe>
+    val flourRecipes: List<FlourRecipe>,
 ) {
     companion object {
         fun initial(): HomeState = HomeState(
-            flourRecipes = emptyList()
+            flourRecipes = emptyList(),
         )
     }
 }

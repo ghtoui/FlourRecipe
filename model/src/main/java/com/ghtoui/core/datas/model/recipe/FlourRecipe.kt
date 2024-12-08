@@ -20,7 +20,7 @@ import com.ghtoui.domain.model.recipe.RecipeCategory
  * @property createTime 作成時間
  */
 @Entity
-internal data class FlourRecipe (
+internal data class FlourRecipe(
     @PrimaryKey(autoGenerate = true) val recipeId: Int = 0,
     val name: String,
     val imagePath: String,

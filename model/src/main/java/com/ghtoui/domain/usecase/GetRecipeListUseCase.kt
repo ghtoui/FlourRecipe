@@ -9,7 +9,7 @@ import javax.inject.Inject
  * レシピのリストを取得する
  */
 class GetRecipeListUseCase @Inject constructor(
-    private val flourRecipeRepository: FlourRecipeRepository
+    private val flourRecipeRepository: FlourRecipeRepository,
 ) {
     operator fun invoke(): Flow<List<FlourRecipe>> = flourRecipeRepository.getRecipeList()
 }

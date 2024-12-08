@@ -11,5 +11,5 @@ import java.time.ZonedDateTime
  */
 fun Long.formatDateTime(): ZonedDateTime = ZonedDateTime.ofInstant(
     Instant.ofEpochMilli(this),
-    ZoneId.systemDefault()
+    ZoneId.systemDefault(),
 )

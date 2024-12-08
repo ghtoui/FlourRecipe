@@ -22,8 +22,8 @@ import androidx.room.PrimaryKey
             parentColumns = ["recipeId"],
             childColumns = ["recipeDetailId"],
             onDelete = ForeignKey.CASCADE,
-        )
-    ]
+        ),
+    ],
 )
 internal data class RecipeDetail(
     @PrimaryKey(autoGenerate = true) val recipeDetailId: Int = 0,

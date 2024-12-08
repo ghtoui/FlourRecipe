@@ -15,16 +15,16 @@ internal object RoomModule {
     @Singleton
     @Provides
     fun provideDatabase(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ) = Room.databaseBuilder(
         context,
         FlourRecipeDatabase::class.java,
-        "flour_recipe_database"
-        ).build()
+        "flour_recipe_database",
+    ).build()
 
     @Singleton
     @Provides
     fun provideFlourRecipeDao(
-        db: FlourRecipeDatabase
+        db: FlourRecipeDatabase,
     ) = db.flourRecipeDao()
 }

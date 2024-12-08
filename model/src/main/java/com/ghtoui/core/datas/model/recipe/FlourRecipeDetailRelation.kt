@@ -27,6 +27,6 @@ internal data class FlourRecipeDetailRelation(
             servings = recipeDetail.servings,
             references = references.map { it.toDomain() },
             recipeProcess = recipeProcess.map { it.toDomain() },
-            ingredients = ingredients.map { it.toDomain() }
+            ingredients = ingredients.map { it.toDomain() },
         )
 }

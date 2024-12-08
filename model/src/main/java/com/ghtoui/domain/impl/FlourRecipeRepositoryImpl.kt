@@ -8,11 +8,11 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 internal class FlourRecipeRepositoryImpl @Inject constructor(
-    private val flourRecipeDao: FlourRecipeDao
+    private val flourRecipeDao: FlourRecipeDao,
 ) : FlourRecipeRepository {
     override fun getRecipeList(): Flow<List<FlourRecipe>> {
         return flourRecipeDao.getAllFlourRecipe().map {
-            it.map { allFlourRecipe->
+            it.map { allFlourRecipe ->
                 allFlourRecipe.toDomain()
             }
         }

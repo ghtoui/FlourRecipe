@@ -14,16 +14,16 @@ import androidx.room.PrimaryKey
  */
 @Entity(
     indices = [
-        Index("recipeDetailId")
-              ],
+        Index("recipeDetailId"),
+    ],
     foreignKeys = [
         ForeignKey(
             entity = RecipeDetail::class,
             parentColumns = ["recipeDetailId"],
             childColumns = ["recipeDetailId"],
             onDelete = ForeignKey.CASCADE,
-        )
-    ]
+        ),
+    ],
 )
 internal data class Reference(
     @PrimaryKey(autoGenerate = true) val referenceId: Int = 0,

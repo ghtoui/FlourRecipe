@@ -25,18 +25,18 @@ internal class HomeScreenViewModel @Inject constructor(
     private val flourRecipes: MutableStateFlow<List<FlourRecipe>> = MutableStateFlow(emptyList())
     val state: StateFlow<HomeState> = flourRecipes.map {
         HomeState(
-            flourRecipes = it
+            flourRecipes = it,
         )
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = HomeState.initial()
+        initialValue = HomeState.initial(),
     )
     init {
         viewModelScope.launch {
             val dummyFlourRecipe = getDummyRecipes().first()
             saveFlourRecipeUseCase(
-                dummyFlourRecipe
+                dummyFlourRecipe,
             )
             getRecipeListUseCase().collect { _flourRecipes ->
                 flourRecipes.update { _flourRecipes }
@@ -48,7 +48,7 @@ internal class HomeScreenViewModel @Inject constructor(
         viewModelScope.launch {
             val dummyFlourRecipe = getDummyRecipes().first()
             saveFlourRecipeUseCase(
-                dummyFlourRecipe
+                dummyFlourRecipe,
             )
         }
     }

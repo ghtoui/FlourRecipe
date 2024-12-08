@@ -19,7 +19,7 @@ import com.ghtoui.domain.model.recipe.RecipeProcess
  */
 @Entity(
     indices = [
-        Index("recipeDetailId")
+        Index("recipeDetailId"),
     ],
     foreignKeys = [
         ForeignKey(
@@ -27,8 +27,8 @@ import com.ghtoui.domain.model.recipe.RecipeProcess
             parentColumns = ["recipeDetailId"],
             childColumns = ["recipeDetailId"],
             onDelete = ForeignKey.CASCADE,
-        )
-    ]
+        ),
+    ],
 )
 internal data class RecipeProcess(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
