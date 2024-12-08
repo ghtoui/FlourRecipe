@@ -16,6 +16,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -24,10 +25,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import com.ghtoui.domain.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
-import com.ghtoui.domain.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.components.RecipeListItem
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
@@ -42,14 +44,15 @@ internal fun HomeScreen(
     mainNavController: NavHostController = LocalMainNavController.current,
     viewModel: HomeScreenViewModel = hiltViewModel(),
 ) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
     HomeScreen(
         modifier = Modifier,
-        recipes = getDummyRecipes(count = 20),
+        recipes = state.flourRecipes,
         onRecipeClick = {
             mainNavController.navigateToRecipe(recipeId = it.id)
         },
         backAble = false,
-        onAddClick = {},
+        onAddClick = viewModel::onAddClick,
     )
 }
 

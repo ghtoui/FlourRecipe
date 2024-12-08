@@ -12,7 +12,7 @@ interface FlourRecipeRepository {
      *
      * @return [Flow]<[List]<[FlourRecipe]>>
      */
-    suspend fun getRecipeList(): Flow<List<FlourRecipe>>
+    fun getRecipeList(): Flow<List<FlourRecipe>>
 
     /**
      * レシピ保存

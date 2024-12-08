@@ -2,9 +2,9 @@ package com.ghtoui.core.datas.room.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
+import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
-import androidx.room.Upsert
 import com.ghtoui.core.datas.model.recipe.FlourRecipe
 import com.ghtoui.core.datas.model.recipe.FlourRecipeDetailRelation
 import kotlinx.coroutines.flow.Flow
@@ -35,16 +35,14 @@ internal interface FlourRecipeDao {
      *
      * @param flourRecipe [FlourRecipe]
      */
-    @Transaction
-    @Upsert
-    fun insertFlourRecipe(flourRecipe: FlourRecipe)
+    @Insert
+    suspend fun insertFlourRecipe(flourRecipe: FlourRecipe): Long
 
     /**
      * レシピを削除する
      *
      * @param flourRecipe [FlourRecipe]
      */
-    @Transaction
     @Delete
     fun deleteFlourRecipe(flourRecipe: FlourRecipe)
 }

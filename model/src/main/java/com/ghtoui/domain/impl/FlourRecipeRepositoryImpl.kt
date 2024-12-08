@@ -10,7 +10,7 @@ import javax.inject.Inject
 internal class FlourRecipeRepositoryImpl @Inject constructor(
     private val flourRecipeDao: FlourRecipeDao
 ) : FlourRecipeRepository {
-    override suspend fun getRecipeList(): Flow<List<FlourRecipe>> {
+    override fun getRecipeList(): Flow<List<FlourRecipe>> {
         return flourRecipeDao.getAllFlourRecipe().map {
             it.map { allFlourRecipe->
                 allFlourRecipe.toDomain()
@@ -19,6 +19,6 @@ internal class FlourRecipeRepositoryImpl @Inject constructor(
     }
 
     override suspend fun saveRecipe(flourRecipe: FlourRecipe): Result<Unit> = runCatching {
-        flourRecipeDao.insertFlourRecipe(flourRecipe = flourRecipe.toEntity())
+        val id = flourRecipeDao.insertFlourRecipe(flourRecipe = flourRecipe.toEntity())
     }
 }
