@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.model.recipe
+package com.ghtoui.domain.model.recipe
 
 /**
  * 基礎となる材料の情報

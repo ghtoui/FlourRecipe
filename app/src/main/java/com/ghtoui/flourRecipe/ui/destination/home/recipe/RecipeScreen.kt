@@ -18,9 +18,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.ghtoui.domain.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
-import com.ghtoui.flourRecipe.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.ui.components.FavoriteIconButton
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
@@ -92,26 +92,28 @@ private fun RecipeScreen(
                 recipeName = recipe.name,
             )
             Spacer(modifier = Modifier.height(24.dp))
-            IngredientContent(
-                modifier = Modifier.fillMaxWidth(),
-                recipeIngredients = recipe.recipeDetail.ingredients,
-                servings = 10,
-            )
-            Spacer(modifier = Modifier.height(24.dp))
-            ProcessContent(
-                modifier = Modifier.fillMaxWidth(),
-                recipeProcess = recipe.recipeDetail.recipeProcess,
-            )
-            if (recipe.recipeDetail.references.isNotEmpty()) {
-                Spacer(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(40.dp),
+            recipe.recipeDetail?.let { recipeDetail ->
+                IngredientContent(
+                    modifier = Modifier.fillMaxWidth(),
+                    recipeIngredients = recipeDetail.ingredients,
+                    servings = 10,
                 )
-                ReferenceContent(
-                    references = recipe.recipeDetail.references,
-                    onReferenceURLClick = onReferenceURLClick,
+                Spacer(modifier = Modifier.height(24.dp))
+                ProcessContent(
+                    modifier = Modifier.fillMaxWidth(),
+                    recipeProcess = recipeDetail.recipeProcess,
                 )
+                if (recipeDetail.references.isNotEmpty()) {
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(40.dp),
+                    )
+                    ReferenceContent(
+                        references = recipeDetail.references,
+                        onReferenceURLClick = onReferenceURLClick,
+                    )
+                }
             }
         }
     }

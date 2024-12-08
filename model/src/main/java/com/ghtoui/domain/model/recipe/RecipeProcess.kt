@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.model.recipe
+package com.ghtoui.domain.model.recipe
 
 /**
  * 作成手順

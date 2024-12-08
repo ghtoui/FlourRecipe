@@ -13,7 +13,9 @@ import androidx.navigation.compose.rememberNavController
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
 import com.ghtoui.flourRecipe.ui.main.MainScreen
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
