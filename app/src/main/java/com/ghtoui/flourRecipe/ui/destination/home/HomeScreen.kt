@@ -34,7 +34,7 @@ import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.components.RecipeListItem
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
 import com.ghtoui.flourRecipe.ui.destination.home.recipe.navigateToRecipe
-import com.ghtoui.flourRecipe.ui.destination.home.recipe.navigateToRegisterRecipe
+import com.ghtoui.flourRecipe.ui.destination.home.register.navigateToRegisterRecipe
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
 /**

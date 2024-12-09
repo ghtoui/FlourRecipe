@@ -48,7 +48,7 @@ internal fun RegisterInputFlourContent(
                 R.string.register_recipe_input_total_quantity,
                 flourTotalQuantity,
             ),
-            style = MaterialTheme.typography.titleLarge,
+            style = MaterialTheme.typography.bodyLarge,
         )
         Spacer(modifier = Modifier.height(12.dp))
         RegisterInputContent(

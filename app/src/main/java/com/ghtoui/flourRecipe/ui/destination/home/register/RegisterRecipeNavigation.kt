@@ -1,9 +1,8 @@
-package com.ghtoui.flourRecipe.ui.destination.home.recipe
+package com.ghtoui.flourRecipe.ui.destination.home.register
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.ghtoui.flourRecipe.ui.destination.home.register.RegisterRecipeScreen
 import kotlinx.serialization.Serializable
 
 /**

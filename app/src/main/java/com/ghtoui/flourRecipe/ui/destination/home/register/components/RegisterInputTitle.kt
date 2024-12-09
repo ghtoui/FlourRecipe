@@ -30,7 +30,7 @@ internal fun RegisterInputTitle(
     ) {
         Text(
             text = title,
-            style = MaterialTheme.typography.headlineLarge,
+            style = MaterialTheme.typography.titleLarge,
         )
         Spacer(modifier = Modifier.height(4.dp))
         BiColorHorizontalDivider()

@@ -15,24 +15,12 @@ internal fun getDummyRecipes(count: Int = 5): List<FlourRecipe> {
     }
 }
 
-internal fun getDummyIngredients(): List<RecipeIngredient> = listOf(
+internal fun getDummyIngredients(): List<RecipeIngredient> = (1..10).map {
     RecipeIngredient(
-        baseIngredient = getBaseIngredient(1),
+        baseIngredient = getBaseIngredient(it),
         quantity = 100,
-    ),
-    RecipeIngredient(
-        baseIngredient = getBaseIngredient(2),
-        quantity = 100,
-    ),
-    RecipeIngredient(
-        baseIngredient = getBaseIngredient(3),
-        quantity = 100,
-    ),
-    RecipeIngredient(
-        baseIngredient = getBaseIngredient(4),
-        quantity = 100,
-    ),
-)
+    )
+}
 
 internal fun getDummyProcess(): List<RecipeProcess> = listOf(
     RecipeProcess(
@@ -84,11 +72,11 @@ private fun getBaseIngredient(id: Int): BaseIngredient {
         "水" to 0,
         "塩" to 0,
     )
-    val name = ingredientMap.keys.toList()[ingredientMap.keys.size % id]
+    val name = ingredientMap.keys.toList()[id % ingredientMap.keys.size]
     return BaseIngredient(
         id = id,
         name = name,
-        calorie = ingredientMap.values.toList()[ingredientMap.values.size % id],
+        calorie = ingredientMap.values.toList()[id % ingredientMap.values.size],
         baseQuantity = 100,
         unit = "g",
         ingredientCategory = if (name == "小麦粉") IngredientCategory.Flour else IngredientCategory.Other
