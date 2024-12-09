@@ -41,7 +41,7 @@ internal fun ReferenceItem(
     ) {
         if (reference.isURL) {
             ReferenceURLItem(
-                enableClick = onReferenceURLClick != null,
+                clickable = onReferenceURLClick != null,
                 onReferenceURLClick = {
                     if (onReferenceURLClick != null) {
                         onReferenceURLClick(URL(reference))
@@ -59,14 +59,14 @@ internal fun ReferenceItem(
 @Composable
 private fun ReferenceURLItem(
     onReferenceURLClick: () -> Unit,
-    enableClick: Boolean,
+    clickable: Boolean,
     modifier: Modifier = Modifier,
 ) {
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(24.dp))
             .clickable(
-                enabled = enableClick,
+                enabled = clickable,
                 onClick = onReferenceURLClick,
             ),
     ) {
@@ -87,7 +87,9 @@ private fun ReferenceURLItem(
                     style = MaterialTheme.typography.bodyLarge,
                 )
             }
-            HorizontalDivider()
+            if (clickable) {
+                HorizontalDivider()
+            }
         }
     }
 }
@@ -112,7 +114,9 @@ private fun ReferenceItemPreview(
     FlourRecipeTheme {
         Surface {
             ReferenceItem(
-                reference = param.reference
+                modifier = Modifier.padding(4.dp),
+                reference = param.reference,
+                onReferenceURLClick = param.onReferenceURLClick
             )
         }
     }
@@ -123,13 +127,20 @@ private class ReferenceItemPreviewPPP :
         listOf(
             Param(
                 reference = "https://example.com",
+                onReferenceURLClick = null
             ),
             Param(
-                reference = "本"
+                reference = "https://example.com",
+                onReferenceURLClick = {}
+            ),
+            Param(
+                reference = "本",
+                onReferenceURLClick = null
             ),
         )
     ) {
     data class Param(
-        val reference: String
+        val reference: String,
+        val onReferenceURLClick: ((URL) -> Unit)?
     )
 }

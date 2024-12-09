@@ -29,6 +29,7 @@ import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterIn
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputIngredientContent
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputReferenceContent
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
+import java.net.URL
 
 /**
  * レシピ登録画面
@@ -45,6 +46,7 @@ internal fun RegisterRecipeScreen(
         onIngredientAddClick = {},
         onReferenceAddClick = {},
         onRegisterClick = {},
+        onReferenceURLClick = {},
     )
 }
 
@@ -58,6 +60,7 @@ private fun RegisterRecipeScreen(
     onRegisterClick: () -> Unit,
     onIngredientAddClick: () -> Unit,
     onReferenceAddClick: () -> Unit,
+    onReferenceURLClick: (URL) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val scrollState = rememberScrollState()
@@ -96,7 +99,8 @@ private fun RegisterRecipeScreen(
                 RegisterInputReferenceContent(
                     modifier = Modifier.fillMaxWidth(),
                     references = recipe.recipeDetail?.references ?: emptyList(),
-                    onReferenceAddClick = onReferenceAddClick
+                    onReferenceAddClick = onReferenceAddClick,
+                    onReferenceURLClick = onReferenceURLClick
                 )
             }
             HorizontalDivider(
@@ -135,6 +139,7 @@ private fun RegisterRecipeScreenPreview() {
                 onIngredientAddClick = {},
                 onReferenceAddClick = {},
                 onRegisterClick = {},
+                onReferenceURLClick = {},
             )
         }
     }

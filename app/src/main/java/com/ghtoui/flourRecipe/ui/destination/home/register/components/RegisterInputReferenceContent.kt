@@ -15,11 +15,13 @@ import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.ui.components.ReferenceItem
 import com.ghtoui.flourRecipe.ui.components.button.AddButton
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
+import java.net.URL
 
 @Composable
 internal fun RegisterInputReferenceContent(
     references: List<String>,
     onReferenceAddClick: () -> Unit,
+    onReferenceURLClick: (URL) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -33,6 +35,7 @@ internal fun RegisterInputReferenceContent(
             modifier = Modifier.fillMaxWidth(),
             onReferenceAddClick = onReferenceAddClick,
             references = references,
+            onReferenceURLClick = onReferenceURLClick,
         )
     }
 }
@@ -41,6 +44,7 @@ internal fun RegisterInputReferenceContent(
 private fun RegisterInputReference(
     references: List<String>,
     onReferenceAddClick: () -> Unit,
+    onReferenceURLClick: (URL) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -50,6 +54,7 @@ private fun RegisterInputReference(
             references.forEach { reference ->
                 ReferenceItem(
                     reference = reference,
+                    onReferenceURLClick = onReferenceURLClick
                 )
             }
         }
@@ -74,8 +79,9 @@ private fun RegisterInputReferenceContentPreview() {
     FlourRecipeTheme {
         Surface {
             RegisterInputReferenceContent(
+                references = dummyReferences,
                 onReferenceAddClick = {},
-                references = dummyReferences
+                onReferenceURLClick = {},
             )
         }
     }
