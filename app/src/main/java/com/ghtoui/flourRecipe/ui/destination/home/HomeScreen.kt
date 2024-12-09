@@ -34,6 +34,7 @@ import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.components.RecipeListItem
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
 import com.ghtoui.flourRecipe.ui.destination.home.recipe.navigateToRecipe
+import com.ghtoui.flourRecipe.ui.destination.home.recipe.navigateToRegisterRecipe
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
 /**
@@ -52,8 +53,7 @@ internal fun HomeScreen(
             mainNavController.navigateToRecipe(recipeId = it.id)
         },
         backAble = false,
-        // TODO: 追加画面に遷移する
-        onAddClick = {},
+        onAddClick = mainNavController::navigateToRegisterRecipe,
     )
 }
 

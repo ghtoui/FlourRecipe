@@ -3,6 +3,7 @@ package com.ghtoui.core.datas.model.recipe
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.ghtoui.domain.model.recipe.IngredientCategory
 
 /**
  * 基礎となる材料の情報
@@ -32,6 +33,7 @@ internal data class BaseIngredient(
     val calorie: Int,
     val baseQuantity: Int,
     val unit: String,
+    val ingredientCategory: IngredientCategory,
 ) {
     fun toDomain(): com.ghtoui.domain.model.recipe.BaseIngredient = com.ghtoui.domain.model.recipe.BaseIngredient(
         id = baseIngredientId,
@@ -39,5 +41,6 @@ internal data class BaseIngredient(
         calorie = calorie,
         baseQuantity = baseQuantity,
         unit = unit,
+        ingredientCategory = ingredientCategory
     )
 }

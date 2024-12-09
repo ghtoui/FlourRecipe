@@ -11,6 +11,7 @@ package com.ghtoui.domain.model.recipe
  * @property calorie カロリー
  * @property baseQuantity 基礎の量
  * @property unit 単位
+ * @property ingredientCategory カテゴリ
  */
 data class BaseIngredient(
     val id: Int,
@@ -18,4 +19,5 @@ data class BaseIngredient(
     val calorie: Int,
     val baseQuantity: Int,
     val unit: String,
+    val ingredientCategory: IngredientCategory,
 )

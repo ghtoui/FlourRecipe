@@ -2,6 +2,7 @@ package com.ghtoui.flourRecipe.ui.destination.home.preview
 
 import com.ghtoui.domain.model.recipe.BaseIngredient
 import com.ghtoui.domain.model.recipe.FlourRecipe
+import com.ghtoui.domain.model.recipe.IngredientCategory
 import com.ghtoui.domain.model.recipe.RecipeCategory
 import com.ghtoui.domain.model.recipe.RecipeDetail
 import com.ghtoui.domain.model.recipe.RecipeIngredient
@@ -83,11 +84,13 @@ private fun getBaseIngredient(id: Int): BaseIngredient {
         "水" to 0,
         "塩" to 0,
     )
+    val name = ingredientMap.keys.toList()[ingredientMap.keys.size % id]
     return BaseIngredient(
         id = id,
-        name = ingredientMap.keys.toList()[ingredientMap.keys.size % id],
+        name = name,
         calorie = ingredientMap.values.toList()[ingredientMap.values.size % id],
         baseQuantity = 100,
         unit = "g",
+        ingredientCategory = if (name == "小麦粉") IngredientCategory.Flour else IngredientCategory.Other
     )
 }
