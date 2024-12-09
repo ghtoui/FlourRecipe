@@ -52,7 +52,8 @@ internal fun HomeScreen(
             mainNavController.navigateToRecipe(recipeId = it.id)
         },
         backAble = false,
-        onAddClick = viewModel::onAddClick,
+        // TODO: 追加画面に遷移する
+        onAddClick = {},
     )
 }
 

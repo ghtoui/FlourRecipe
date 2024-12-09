@@ -10,6 +10,6 @@ import java.time.ZonedDateTime
  * @return [ZonedDateTime]
  */
 fun Long.formatDateTime(): ZonedDateTime = ZonedDateTime.ofInstant(
-    Instant.ofEpochMilli(this),
+    Instant.ofEpochSecond(this),
     ZoneId.systemDefault(),
 )
