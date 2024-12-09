@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "9fc16e6ecb341504ed0685cfffde5628",
+    "identityHash": "18060a1d680348626955470cb71c1d06",
     "entities": [
       {
         "tableName": "FlourRecipe",
@@ -208,7 +208,7 @@
       },
       {
         "tableName": "BaseIngredient",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`baseIngredientId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `calorie` INTEGER NOT NULL, `baseQuantity` INTEGER NOT NULL, `unit` TEXT NOT NULL, FOREIGN KEY(`baseIngredientId`) REFERENCES `BaseIngredient`(`baseIngredientId`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`baseIngredientId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `calorie` INTEGER NOT NULL, `baseQuantity` INTEGER NOT NULL, `unit` TEXT NOT NULL, `ingredientCategory` TEXT NOT NULL, FOREIGN KEY(`baseIngredientId`) REFERENCES `BaseIngredient`(`baseIngredientId`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
         "fields": [
           {
             "fieldPath": "baseIngredientId",
@@ -237,6 +237,12 @@
           {
             "fieldPath": "unit",
             "columnName": "unit",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ingredientCategory",
+            "columnName": "ingredientCategory",
             "affinity": "TEXT",
             "notNull": true
           }
@@ -386,7 +392,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9fc16e6ecb341504ed0685cfffde5628')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '18060a1d680348626955470cb71c1d06')"
     ]
   }
 }

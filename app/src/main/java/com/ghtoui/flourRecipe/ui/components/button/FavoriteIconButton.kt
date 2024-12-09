@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.ui.components
+package com.ghtoui.flourRecipe.ui.components.button
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
