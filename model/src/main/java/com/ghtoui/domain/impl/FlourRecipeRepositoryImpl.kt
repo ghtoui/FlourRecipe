@@ -19,6 +19,6 @@ internal class FlourRecipeRepositoryImpl @Inject constructor(
     }
 
     override suspend fun saveRecipe(flourRecipe: FlourRecipe): Result<Unit> = runCatching {
-        val id = flourRecipeDao.insertFlourRecipe(flourRecipe = flourRecipe.toEntity())
+        flourRecipeDao.insertFlourRecipe(flourRecipe = flourRecipe.toEntity())
     }
 }

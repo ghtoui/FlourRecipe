@@ -20,9 +20,20 @@ import javax.inject.Inject
 @HiltViewModel
 internal class HomeScreenViewModel @Inject constructor(
     private val getRecipeListUseCase: GetRecipeListUseCase,
-    private val saveFlourRecipeUseCase: SaveFlourRecipeUseCase,
 ) : ViewModel() {
-    private val flourRecipes: MutableStateFlow<List<FlourRecipe>> = MutableStateFlow(emptyList())
+    private val flourRecipes: MutableStateFlow<List<FlourRecipe>> = MutableStateFlow<List<FlourRecipe>>(emptyList()).apply {
+        viewModelScope.launch {
+            getRecipeListUseCase().collect { recipeList ->
+                update {
+                    recipeList
+                }
+            }
+        }
+    }
+
+    /**
+     * ホームの状態
+     */
     val state: StateFlow<HomeState> = flourRecipes.map {
         HomeState(
             flourRecipes = it,
@@ -32,24 +43,4 @@ internal class HomeScreenViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5_000),
         initialValue = HomeState.initial(),
     )
-    init {
-        viewModelScope.launch {
-            val dummyFlourRecipe = getDummyRecipes().first()
-            saveFlourRecipeUseCase(
-                dummyFlourRecipe,
-            )
-            getRecipeListUseCase().collect { _flourRecipes ->
-                flourRecipes.update { _flourRecipes }
-            }
-        }
-    }
-
-    fun onAddClick() {
-        viewModelScope.launch {
-            val dummyFlourRecipe = getDummyRecipes().first()
-            saveFlourRecipeUseCase(
-                dummyFlourRecipe,
-            )
-        }
-    }
 }
