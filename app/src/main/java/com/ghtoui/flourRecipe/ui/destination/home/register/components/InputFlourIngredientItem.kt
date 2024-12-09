@@ -3,7 +3,6 @@ package com.ghtoui.flourRecipe.ui.destination.home.register.components
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.HorizontalDivider
@@ -39,18 +38,20 @@ internal fun InputFlourIngredientItem(
     Column(
         modifier = modifier
     ) {
-        Column(
+        Row(
             modifier = Modifier
                 .padding(
-                    vertical = 4.dp
+                    vertical = 8.dp
                 )
         ) {
             Text(
+                modifier = Modifier.alignByBaseline(),
                 text = ingredient.baseIngredient.name,
                 style = MaterialTheme.typography.bodyLarge,
             )
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.weight(1f))
             AboutFlourQuantity(
+                modifier = Modifier.alignByBaseline(),
                 totalQuantity = totalQuantity,
                 quantity = ingredient.quantity,
             )

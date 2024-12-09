@@ -17,6 +17,7 @@
     <string name="ingredient">材料</string>
     <string name="add_label">追加</string>
     <string name="format_parentheses">(%s)</string>
+    <string name="register_label">登録</string>
 
     <!-- ボトムバー -->
     <string name="bottom_home_bar_label">ホーム</string>

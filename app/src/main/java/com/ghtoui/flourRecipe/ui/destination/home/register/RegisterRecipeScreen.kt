@@ -6,10 +6,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,6 +44,7 @@ internal fun RegisterRecipeScreen(
         onFlourAddClick = {},
         onIngredientAddClick = {},
         onReferenceAddClick = {},
+        onRegisterClick = {},
     )
 }
 
@@ -49,6 +55,7 @@ private fun RegisterRecipeScreen(
     backAble: Boolean,
     onBackClick: () -> Unit,
     onFlourAddClick: () -> Unit,
+    onRegisterClick: () -> Unit,
     onIngredientAddClick: () -> Unit,
     onReferenceAddClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -67,26 +74,49 @@ private fun RegisterRecipeScreen(
         Column(
             modifier = Modifier
                 .padding(top = innerPadding.calculateTopPadding())
-                .verticalScroll(scrollState)
-                .padding(horizontal = 24.dp)
-                .padding(bottom = 20.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            RegisterInputFlourContent(
-                modifier = Modifier.fillMaxWidth(),
-                onFlourAddClick = onFlourAddClick,
-                ingredients = recipe.recipeDetail?.ingredients ?: emptyList(),
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .verticalScroll(scrollState)
+                    .padding(horizontal = 24.dp)
+                    .padding(bottom = 20.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                RegisterInputFlourContent(
+                    modifier = Modifier.fillMaxWidth(),
+                    onFlourAddClick = onFlourAddClick,
+                    ingredients = recipe.recipeDetail?.ingredients ?: emptyList(),
+                )
+                RegisterInputIngredientContent(
+                    modifier = Modifier.fillMaxWidth(),
+                    onIngredientAddClick = onIngredientAddClick,
+                    ingredients = recipe.recipeDetail?.ingredients ?: emptyList(),
+                )
+                RegisterInputReferenceContent(
+                    modifier = Modifier.fillMaxWidth(),
+                    references = recipe.recipeDetail?.references ?: emptyList(),
+                    onReferenceAddClick = onReferenceAddClick
+                )
+            }
+            HorizontalDivider(
+                thickness = 1.dp,
+                color = MaterialTheme.colorScheme.primary,
             )
-            RegisterInputIngredientContent(
-                modifier = Modifier.fillMaxWidth(),
-                onIngredientAddClick = onIngredientAddClick,
-                ingredients = recipe.recipeDetail?.ingredients ?: emptyList(),
-            )
-            RegisterInputReferenceContent(
-                modifier = Modifier.fillMaxWidth(),
-                references = recipe.recipeDetail?.references ?: emptyList(),
-                onReferenceAddClick = onReferenceAddClick
-            )
+            Button(
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(vertical = 4.dp),
+                onClick = onRegisterClick
+            ) {
+                Text(
+                    modifier = Modifier.padding(
+                        horizontal = 24.dp,
+                    ),
+                    text = stringResource(R.string.register_label),
+                    style = MaterialTheme.typography.labelLarge,
+                )
+            }
         }
     }
 }
@@ -104,6 +134,7 @@ private fun RegisterRecipeScreenPreview() {
                 onFlourAddClick = {},
                 onIngredientAddClick = {},
                 onReferenceAddClick = {},
+                onRegisterClick = {},
             )
         }
     }
