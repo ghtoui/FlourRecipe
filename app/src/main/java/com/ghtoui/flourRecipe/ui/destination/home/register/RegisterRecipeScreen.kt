@@ -20,6 +20,7 @@ import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyIngredients
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputFlourContent
+import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputIngredientContent
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
 /**
@@ -33,6 +34,7 @@ internal fun RegisterRecipeScreen(
         backAble = true,
         onBackClick = mainNavController::popBackStack,
         onFlourAddClick = {},
+        onIngredientAddClick = {},
         ingredients = getDummyIngredients(),
     )
 }
@@ -44,6 +46,7 @@ private fun RegisterRecipeScreen(
     backAble: Boolean,
     onBackClick: () -> Unit,
     onFlourAddClick: () -> Unit,
+    onIngredientAddClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val scrollState = rememberScrollState()
@@ -65,7 +68,12 @@ private fun RegisterRecipeScreen(
         ) {
             RegisterInputFlourContent(
                 modifier = Modifier.fillMaxWidth(),
-                onAddClick = onFlourAddClick,
+                onFlourAddClick = onFlourAddClick,
+                ingredients = ingredients
+            )
+            RegisterInputIngredientContent(
+                modifier = Modifier.fillMaxWidth(),
+                onIngredientAddClick = onIngredientAddClick,
                 ingredients = ingredients
             )
         }
@@ -82,6 +90,7 @@ private fun RegisterRecipeScreenPreview() {
                 backAble = true,
                 onBackClick = {},
                 onFlourAddClick = {},
+                onIngredientAddClick = {},
                 ingredients = getDummyIngredients(),
             )
         }

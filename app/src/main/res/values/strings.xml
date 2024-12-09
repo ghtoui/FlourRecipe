@@ -35,5 +35,7 @@
     <!--  レシピ登録  -->
     <string name="register_recipe_app_top_bar_title">レシピ登録</string>
     <string name="register_recipe_input_flour_title">小麦粉</string>
+    <string name="register_recipe_input_ingredient_title">材料</string>
+    <string name="register_recipe_input_reference_title">参照したもの</string>
     <string name="register_recipe_input_total_quantity">小麦粉の合計使用量: %sg</string>
 </resources>
