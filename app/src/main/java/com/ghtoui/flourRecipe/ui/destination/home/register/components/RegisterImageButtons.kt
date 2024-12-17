@@ -22,21 +22,21 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 internal fun RegisterImageButtons(
     onSelectFlourRecipeImage: (Uri) -> Unit,
     onClickTakePicture: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Row(
-        modifier = modifier
+        modifier = modifier,
     ) {
         IconButton(
-            onClick = onClickTakePicture
+            onClick = onClickTakePicture,
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_camera),
-                contentDescription = stringResource(R.string.description_take_picture_recipe_image)
+                contentDescription = stringResource(R.string.description_take_picture_recipe_image),
             )
         }
         AddFlourRecipeImage(
-            onSelectFlourRecipeImage = onSelectFlourRecipeImage
+            onSelectFlourRecipeImage = onSelectFlourRecipeImage,
         )
     }
 }
@@ -44,7 +44,7 @@ internal fun RegisterImageButtons(
 @Composable
 private fun AddFlourRecipeImage(
     onSelectFlourRecipeImage: (Uri) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
     val pickMedia = rememberLauncherForActivityResult(
@@ -56,18 +56,18 @@ private fun AddFlourRecipeImage(
 
                 onSelectFlourRecipeImage(uri)
             }
-        }
+        },
     )
 
     IconButton(
         modifier = modifier,
         onClick = {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-        }
+        },
     ) {
         Icon(
             painter = painterResource(R.drawable.ic_image),
-            contentDescription = stringResource(R.string.description_add_recipe_image)
+            contentDescription = stringResource(R.string.description_add_recipe_image),
         )
     }
 }

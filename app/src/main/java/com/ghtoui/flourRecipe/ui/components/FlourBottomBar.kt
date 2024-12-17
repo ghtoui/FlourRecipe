@@ -37,7 +37,7 @@ internal fun FlourBottomBar(
     mainNavController: NavHostController = LocalMainNavController.current,
     onHomeClick: () -> Unit = mainNavController::navigateToHome,
     onSettingsClick: () -> Unit = mainNavController::navigateToSettings,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val currentBackStack by mainNavController.currentBackStackEntryAsState()
     // TODO: 選択されているものをロジックで実装する

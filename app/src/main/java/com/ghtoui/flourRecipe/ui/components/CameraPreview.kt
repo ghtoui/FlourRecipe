@@ -51,9 +51,9 @@ import com.google.accompanist.permissions.PermissionState
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
+import kotlinx.coroutines.launch
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
@@ -105,7 +105,7 @@ internal fun CameraPreview(
                 lifecycleOwner,
                 CameraSelector.DEFAULT_BACK_CAMERA,
                 preview,
-                imageCapture
+                imageCapture,
             )
         }
 
@@ -116,16 +116,17 @@ internal fun CameraPreview(
 
     currentSurfaceRequest?.let { surfaceRequest ->
         Box(
-            modifier = modifier
+            modifier = modifier,
         ) {
             CameraXViewfinder(
                 surfaceRequest = surfaceRequest,
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxSize(),
             )
             CameraFrame(
                 onTakePicture = {
-                    imageCapture.takePicture(cameraExecutor,
+                    imageCapture.takePicture(
+                        cameraExecutor,
                         object : ImageCapture.OnImageCapturedCallback() {
                             override fun onCaptureSuccess(image: ImageProxy) {
                                 onCaptured(image.toBitmap())
@@ -135,10 +136,10 @@ internal fun CameraPreview(
                             override fun onError(exception: ImageCaptureException) {
                                 exception.printStackTrace()
                             }
-                        }
+                        },
                     )
                 },
-                onClose = onClose
+                onClose = onClose,
             )
         }
     }
@@ -153,31 +154,31 @@ private fun BoxScope.CameraFrame(
         modifier = Modifier
             .align(Alignment.TopStart)
             .padding(
-                top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
+                top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding(),
             )
             .padding(start = 12.dp),
-        onClick = onClose
+        onClick = onClose,
     ) {
         Icon(
             painter = painterResource(R.drawable.ic_close),
             contentDescription = stringResource(R.string.description_close),
-            tint = Color.White
+            tint = Color.White,
         )
     }
     Box(
         modifier = Modifier
             .align(Alignment.BottomCenter)
             .padding(
-                bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+                bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding(),
             )
             .clip(CircleShape)
             .border(
                 width = 2.dp,
                 color = Color.White,
-                shape = CircleShape
+                shape = CircleShape,
             )
             .padding(4.dp),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         Box(
             modifier = Modifier
@@ -186,8 +187,8 @@ private fun BoxScope.CameraFrame(
                 .background(Color.White)
                 .clickable(
                     role = Role.Button,
-                    onClick = onTakePicture
-                )
+                    onClick = onTakePicture,
+                ),
         )
     }
 }
@@ -198,11 +199,11 @@ private fun CameraButtonPreview() {
     FlourRecipeTheme {
         Box(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxSize(),
         ) {
             CameraFrame(
                 onClose = {},
-                onTakePicture = {}
+                onTakePicture = {},
             )
         }
     }

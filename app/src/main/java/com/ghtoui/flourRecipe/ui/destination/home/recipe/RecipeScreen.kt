@@ -78,7 +78,7 @@ private fun RecipeScreen(
         },
         bottomBar = {
             FlourBottomBar()
-        }
+        },
     ) { innerPadding ->
         Column(
             modifier = Modifier

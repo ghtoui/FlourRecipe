@@ -26,13 +26,13 @@ internal fun RegisterFlourRecipeImageContent(
     onSelectFlourRecipeImage: (Uri) -> Unit,
     onDeleteImage: () -> Unit,
     onClickTakePicture: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier
+        modifier = modifier,
     ) {
         RegisterInputTitle(
-            title = stringResource(R.string.register_recipe_input_image_title)
+            title = stringResource(R.string.register_recipe_input_image_title),
         )
         Spacer(modifier = Modifier.height(8.dp))
         Row {
@@ -48,11 +48,11 @@ internal fun RegisterFlourRecipeImageContent(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 IconButton(
-                    onClick = onDeleteImage
+                    onClick = onDeleteImage,
                 ) {
                     Icon(
                         painterResource(R.drawable.ic_delete),
-                        contentDescription = stringResource(R.string.description_delete)
+                        contentDescription = stringResource(R.string.description_delete),
                     )
                 }
             }

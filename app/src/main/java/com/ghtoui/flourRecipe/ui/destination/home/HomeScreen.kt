@@ -82,7 +82,7 @@ private fun HomeScreen(
         },
         bottomBar = {
             FlourBottomBar()
-        }
+        },
     ) { innerPadding ->
         Box(
             modifier = Modifier

@@ -88,7 +88,7 @@ private fun RegisterRecipeScreen(
             if (!cameraOpenState.value) {
                 FlourBottomBar()
             }
-        }
+        },
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -163,7 +163,7 @@ private fun RegisterRecipeScreen(
             },
             onCaptured = {
                 cameraOpenState.value = false
-            }
+            },
         )
     }
 }
