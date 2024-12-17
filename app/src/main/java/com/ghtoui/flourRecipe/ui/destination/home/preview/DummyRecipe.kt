@@ -79,6 +79,6 @@ private fun getBaseIngredient(id: Int): BaseIngredient {
         calorie = ingredientMap.values.toList()[id % ingredientMap.values.size],
         baseQuantity = 100,
         unit = "g",
-        ingredientCategory = if (name == "小麦粉") IngredientCategory.Flour else IngredientCategory.Other
+        ingredientCategory = if (name == "小麦粉") IngredientCategory.Flour else IngredientCategory.Other,
     )
 }

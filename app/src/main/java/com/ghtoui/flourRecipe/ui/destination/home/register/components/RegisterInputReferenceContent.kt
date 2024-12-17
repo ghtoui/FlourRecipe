@@ -17,18 +17,26 @@ import com.ghtoui.flourRecipe.ui.components.button.AddButton
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 import java.net.URL
 
+/**
+ * 参照したもののコンテンツ
+ *
+ * @param references 参照したもののリスト
+ * @param onReferenceAddClick 参照するものを追加するをクリック
+ * @param onReferenceURLClick webサイトのアイテムをクリック
+ * @param modifier [Modifier]
+ */
 @Composable
 internal fun RegisterInputReferenceContent(
     references: List<String>,
     onReferenceAddClick: () -> Unit,
     onReferenceURLClick: (URL) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier,
     ) {
         RegisterInputTitle(
-            title = stringResource(R.string.register_recipe_input_reference_title)
+            title = stringResource(R.string.register_recipe_input_reference_title),
         )
         Spacer(modifier = Modifier.height(12.dp))
         RegisterInputReference(
@@ -45,16 +53,16 @@ private fun RegisterInputReference(
     references: List<String>,
     onReferenceAddClick: () -> Unit,
     onReferenceURLClick: (URL) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier
+        modifier = modifier,
     ) {
         Column {
             references.forEach { reference ->
                 ReferenceItem(
                     reference = reference,
-                    onReferenceURLClick = onReferenceURLClick
+                    onReferenceURLClick = onReferenceURLClick,
                 )
             }
         }
@@ -62,7 +70,7 @@ private fun RegisterInputReference(
         AddButton(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally),
-            onClick = onReferenceAddClick
+            onClick = onReferenceAddClick,
         )
     }
 }

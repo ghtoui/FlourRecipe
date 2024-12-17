@@ -29,7 +29,6 @@ import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 import java.net.URL
 
-
 @Composable
 internal fun ReferenceItem(
     reference: String,
@@ -37,7 +36,7 @@ internal fun ReferenceItem(
     onReferenceURLClick: ((URL) -> Unit)? = null,
 ) {
     Box(
-        modifier = modifier
+        modifier = modifier,
     ) {
         if (reference.isURL) {
             ReferenceURLItem(
@@ -50,7 +49,7 @@ internal fun ReferenceItem(
             )
         } else {
             ReferenceItemText(
-                reference = reference
+                reference = reference,
             )
         }
     }
@@ -109,14 +108,14 @@ private fun ReferenceItemText(
 @Preview
 @Composable
 private fun ReferenceItemPreview(
-    @PreviewParameter(ReferenceItemPreviewPPP::class) param: ReferenceItemPreviewPPP.Param
+    @PreviewParameter(ReferenceItemPreviewPPP::class) param: ReferenceItemPreviewPPP.Param,
 ) {
     FlourRecipeTheme {
         Surface {
             ReferenceItem(
                 modifier = Modifier.padding(4.dp),
                 reference = param.reference,
-                onReferenceURLClick = param.onReferenceURLClick
+                onReferenceURLClick = param.onReferenceURLClick,
             )
         }
     }
@@ -127,20 +126,20 @@ private class ReferenceItemPreviewPPP :
         listOf(
             Param(
                 reference = "https://example.com",
-                onReferenceURLClick = null
+                onReferenceURLClick = null,
             ),
             Param(
                 reference = "https://example.com",
-                onReferenceURLClick = {}
+                onReferenceURLClick = {},
             ),
             Param(
                 reference = "本",
-                onReferenceURLClick = null
+                onReferenceURLClick = null,
             ),
-        )
+        ),
     ) {
     data class Param(
         val reference: String,
-        val onReferenceURLClick: ((URL) -> Unit)?
+        val onReferenceURLClick: ((URL) -> Unit)?,
     )
 }

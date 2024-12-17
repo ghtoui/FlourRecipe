@@ -41,6 +41,6 @@ internal data class BaseIngredient(
         calorie = calorie,
         baseQuantity = baseQuantity,
         unit = unit,
-        ingredientCategory = ingredientCategory
+        ingredientCategory = ingredientCategory,
     )
 }

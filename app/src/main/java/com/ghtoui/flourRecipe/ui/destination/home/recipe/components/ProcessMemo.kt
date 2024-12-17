@@ -1,7 +1,6 @@
-package com.ghtoui.flourRecipe.ui.components.button
+package com.ghtoui.flourRecipe.ui.destination.home.recipe.components
 
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -9,37 +8,38 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.ghtoui.flourRecipe.R
+import com.ghtoui.flourRecipe.ui.components.TitleBorderBox
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
 /**
- * 追加ボタン
+ * 作り方のメモ
  *
- * @param onClick クリックした時
+ * @param memo メモ
  * @param modifier [Modifier]
  */
 @Composable
-internal fun AddButton(
-    onClick: () -> Unit,
+internal fun ProcessMemo(
+    memo: String,
     modifier: Modifier = Modifier,
 ) {
-    OutlinedButton(
+    TitleBorderBox(
         modifier = modifier,
-        onClick = onClick,
+        topTitle = stringResource(id = R.string.recipe_memo),
     ) {
         Text(
-            text = stringResource(R.string.add_label),
-            style = MaterialTheme.typography.labelMedium,
+            text = memo,
+            style = MaterialTheme.typography.bodyMedium,
         )
     }
 }
 
 @Preview
 @Composable
-private fun AddButtonPreview() {
+private fun ProcessMemoPreview() {
     FlourRecipeTheme {
         Surface {
-            AddButton(
-                onClick = {},
+            ProcessMemo(
+                memo = "メモです．",
             )
         }
     }

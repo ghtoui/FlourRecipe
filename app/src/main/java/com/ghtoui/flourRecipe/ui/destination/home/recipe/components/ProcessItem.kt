@@ -3,7 +3,6 @@ package com.ghtoui.flourRecipe.ui.destination.home.recipe.components
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -12,13 +11,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ghtoui.domain.model.recipe.RecipeProcess
-import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.ui.components.NumberText
-import com.ghtoui.flourRecipe.ui.components.TitleBorderBox
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyProcess
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
@@ -35,24 +31,13 @@ internal fun ProcessItem(
     recipeProcess: RecipeProcess,
     modifier: Modifier = Modifier,
 ) {
-    Column(
-        modifier = modifier,
-    ) {
-        Row {
-            NumberText(number = index)
-            Spacer(modifier = Modifier.width(16.dp))
-            ProcessDescription(
-                modifier = Modifier.padding(top = 2.dp),
-                recipeProcess = recipeProcess,
-            )
-        }
-        recipeProcess.memo?.let {
-            Spacer(modifier = Modifier.height(24.dp))
-            ProcessMemo(
-                modifier = Modifier.fillMaxWidth(),
-                memo = it,
-            )
-        }
+    Row(modifier = modifier) {
+        NumberText(number = index)
+        Spacer(modifier = Modifier.width(16.dp))
+        ProcessDescription(
+            modifier = Modifier.padding(top = 2.dp),
+            recipeProcess = recipeProcess,
+        )
     }
 }
 
@@ -72,22 +57,6 @@ private fun ProcessDescription(
         Text(
             text = recipeProcess.description,
             style = MaterialTheme.typography.bodyLarge,
-        )
-    }
-}
-
-@Composable
-private fun ProcessMemo(
-    memo: String,
-    modifier: Modifier = Modifier,
-) {
-    TitleBorderBox(
-        modifier = modifier,
-        topTitle = stringResource(id = R.string.recipe_memo),
-    ) {
-        Text(
-            text = memo,
-            style = MaterialTheme.typography.bodyMedium,
         )
     }
 }

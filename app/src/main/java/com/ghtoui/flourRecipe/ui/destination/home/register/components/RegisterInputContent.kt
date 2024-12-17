@@ -27,10 +27,10 @@ internal fun RegisterInputContent(
     totalQuantity: Int?,
     ingredients: List<RecipeIngredient>,
     onAddClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier
+        modifier = modifier,
     ) {
         Column {
             ingredients.forEach { ingredient ->
@@ -44,7 +44,7 @@ internal fun RegisterInputContent(
         AddButton(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally),
-            onClick = onAddClick
+            onClick = onAddClick,
         )
     }
 }

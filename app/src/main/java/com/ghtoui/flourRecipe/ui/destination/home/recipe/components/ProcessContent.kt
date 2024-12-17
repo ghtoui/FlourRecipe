@@ -41,10 +41,19 @@ internal fun ProcessContent(
         ) {
             recipeProcess.forEachIndexed { index, recipeProcess ->
                 // 1始まりにする
-                ProcessItem(
-                    index = index + 1,
-                    recipeProcess = recipeProcess,
-                )
+                Column {
+                    ProcessItem(
+                        index = index + 1,
+                        recipeProcess = recipeProcess,
+                    )
+                    recipeProcess.memo?.let {
+                        Spacer(modifier = Modifier.height(24.dp))
+                        ProcessMemo(
+                            modifier = Modifier.fillMaxWidth(),
+                            memo = it,
+                        )
+                    }
+                }
                 HorizontalDivider()
             }
         }

@@ -36,13 +36,13 @@ internal fun InputFlourIngredientItem(
     modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier
+        modifier = modifier,
     ) {
         Row(
             modifier = Modifier
                 .padding(
-                    vertical = 8.dp
-                )
+                    vertical = 8.dp,
+                ),
         ) {
             Text(
                 modifier = Modifier.alignByBaseline(),
@@ -80,7 +80,7 @@ private fun AboutFlourQuantity(
                 R.string.gram_unit,
                 quantity,
             ),
-            style = MaterialTheme.typography.labelLarge
+            style = MaterialTheme.typography.labelLarge,
         )
         flourRatio?.let { flourRatio ->
             Spacer(modifier = Modifier.width(2.dp))
@@ -90,9 +90,9 @@ private fun AboutFlourQuantity(
                     stringResource(
                         R.string.ratio_unit,
                         flourRatio,
-                    )
+                    ),
                 ),
-                style = MaterialTheme.typography.labelLarge
+                style = MaterialTheme.typography.labelLarge,
             )
         }
     }
@@ -101,7 +101,7 @@ private fun AboutFlourQuantity(
 @Preview
 @Composable
 private fun InputFlourIngredientItemPreview(
-    @PreviewParameter(InputFlourIngredientItemPreviewPPP::class) param: InputFlourIngredientItemPreviewPPP.Param
+    @PreviewParameter(InputFlourIngredientItemPreviewPPP::class) param: InputFlourIngredientItemPreviewPPP.Param,
 ) {
     val dummyIngredient = getDummyIngredients().first()
     FlourRecipeTheme {
@@ -122,11 +122,11 @@ private class InputFlourIngredientItemPreviewPPP :
                 totalQuantity = 1000,
             ),
             Param(
-                totalQuantity = null
+                totalQuantity = null,
             ),
-        )
+        ),
     ) {
     data class Param(
-        val totalQuantity: Int?
+        val totalQuantity: Int?,
     )
 }
