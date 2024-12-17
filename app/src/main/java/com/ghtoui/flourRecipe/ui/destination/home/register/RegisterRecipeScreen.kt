@@ -27,6 +27,7 @@ import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputFlourContent
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputIngredientContent
+import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputProcessContent
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputReferenceContent
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 import java.net.URL
@@ -41,12 +42,13 @@ internal fun RegisterRecipeScreen(
     RegisterRecipeScreen(
         recipe = getDummyRecipes().first(),
         backAble = true,
-        onBackClick = mainNavController::popBackStack,
+        onBackClick = mainNavController::navigateUp,
         onFlourAddClick = {},
         onIngredientAddClick = {},
         onReferenceAddClick = {},
         onRegisterClick = {},
         onReferenceURLClick = {},
+        onAddInputProcessClick = {},
     )
 }
 
@@ -60,6 +62,7 @@ private fun RegisterRecipeScreen(
     onRegisterClick: () -> Unit,
     onIngredientAddClick: () -> Unit,
     onReferenceAddClick: () -> Unit,
+    onAddInputProcessClick: () -> Unit,
     onReferenceURLClick: (URL) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -84,7 +87,7 @@ private fun RegisterRecipeScreen(
                     .verticalScroll(scrollState)
                     .padding(horizontal = 24.dp)
                     .padding(bottom = 20.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 RegisterInputFlourContent(
                     modifier = Modifier.fillMaxWidth(),
@@ -95,6 +98,11 @@ private fun RegisterRecipeScreen(
                     modifier = Modifier.fillMaxWidth(),
                     onIngredientAddClick = onIngredientAddClick,
                     ingredients = recipe.recipeDetail?.ingredients ?: emptyList(),
+                )
+                RegisterInputProcessContent(
+                    modifier = Modifier.fillMaxWidth(),
+                    process = recipe.recipeDetail?.recipeProcess ?: emptyList(),
+                    onAddInputProcessClick = onAddInputProcessClick
                 )
                 RegisterInputReferenceContent(
                     modifier = Modifier.fillMaxWidth(),
@@ -125,7 +133,7 @@ private fun RegisterRecipeScreen(
     }
 }
 
-@Preview
+@Preview(heightDp = 1500)
 @Composable
 private fun RegisterRecipeScreenPreview() {
     FlourRecipeTheme {
@@ -140,6 +148,7 @@ private fun RegisterRecipeScreenPreview() {
                 onReferenceAddClick = {},
                 onRegisterClick = {},
                 onReferenceURLClick = {},
+                onAddInputProcessClick = {},
             )
         }
     }

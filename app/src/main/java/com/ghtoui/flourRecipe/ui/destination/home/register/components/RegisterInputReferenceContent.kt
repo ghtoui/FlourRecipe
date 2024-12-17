@@ -17,6 +17,14 @@ import com.ghtoui.flourRecipe.ui.components.button.AddButton
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 import java.net.URL
 
+/**
+ * 参照したもののコンテンツ
+ *
+ * @param references 参照したもののリスト
+ * @param onReferenceAddClick 参照するものを追加するをクリック
+ * @param onReferenceURLClick webサイトのアイテムをクリック
+ * @param modifier [Modifier]
+ */
 @Composable
 internal fun RegisterInputReferenceContent(
     references: List<String>,
