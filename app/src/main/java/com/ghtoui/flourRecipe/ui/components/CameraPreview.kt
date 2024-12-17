@@ -1,4 +1,4 @@
-package com.ghtoui.flourRecipe.ui.camerax
+package com.ghtoui.flourRecipe.ui.components
 
 import android.Manifest
 import android.graphics.Bitmap

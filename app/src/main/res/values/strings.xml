@@ -8,6 +8,8 @@
     <string name="description_recipe_image">%sの完成画像</string>
     <string name="description_favorite_select">お気に入りアイコン お気に入り済み</string>
     <string name="description_favorite_un_select">お気に入りアイコン お気に入りではない</string>
+    <string name="description_add_recipe_image">完成したレシピのイメージ写真を追加する</string>
+    <string name="description_delete">削除する</string>
 
     <!--  単位  -->
     <string name="servings_unit">人前</string>

@@ -30,11 +30,11 @@ import androidx.navigation.NavHostController
 import com.ghtoui.domain.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
-import com.ghtoui.flourRecipe.ui.camerax.navigateToCameraX
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.components.RecipeListItem
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
 import com.ghtoui.flourRecipe.ui.destination.home.recipe.navigateToRecipe
+import com.ghtoui.flourRecipe.ui.destination.home.register.navigateToRegisterRecipe
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
 /**
@@ -53,7 +53,7 @@ internal fun HomeScreen(
             mainNavController.navigateToRecipe(recipeId = it.id)
         },
         backAble = false,
-        onAddClick = mainNavController::navigateToCameraX,
+        onAddClick = mainNavController::navigateToRegisterRecipe,
     )
 }
 
