@@ -26,6 +26,7 @@ import com.ghtoui.domain.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
 import com.ghtoui.flourRecipe.ui.components.CameraPreview
+import com.ghtoui.flourRecipe.ui.components.FlourBottomBar
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterFlourRecipeImageContent
@@ -83,10 +84,18 @@ private fun RegisterRecipeScreen(
                 onBackClick = onBackClick,
             )
         },
+        bottomBar = {
+            if (!cameraOpenState.value) {
+                FlourBottomBar()
+            }
+        }
     ) { innerPadding ->
         Column(
             modifier = Modifier
-                .padding(top = innerPadding.calculateTopPadding()),
+                .padding(
+                    top = innerPadding.calculateTopPadding(),
+                    bottom = innerPadding.calculateBottomPadding(),
+                ),
         ) {
             Column(
                 modifier = Modifier
