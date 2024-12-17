@@ -3,6 +3,7 @@
 
     <!--  content description  -->
     <string name="description_back_navigation">戻る</string>
+    <string name="description_close">閉じる</string>
     <string name="description_add_recipe">レシピを追加</string>
     <string name="description_recipe_image">%sの完成画像</string>
     <string name="description_favorite_select">お気に入りアイコン お気に入り済み</string>

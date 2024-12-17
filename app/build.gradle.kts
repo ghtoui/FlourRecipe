@@ -82,4 +82,11 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     ksp(libs.hilt.compiler)
+
+    // cameraX
+    implementation(libs.camerax.lifecycle)
+    implementation(libs.camerax.compose)
+
+    // accompanist
+    implementation(libs.accompanist.permissions)
 }
