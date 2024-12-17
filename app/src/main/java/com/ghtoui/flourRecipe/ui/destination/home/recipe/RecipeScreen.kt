@@ -21,6 +21,7 @@ import androidx.navigation.NavHostController
 import com.ghtoui.domain.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
+import com.ghtoui.flourRecipe.ui.components.FlourBottomBar
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.components.button.FavoriteIconButton
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
@@ -74,6 +75,9 @@ private fun RecipeScreen(
                     onFavoriteClick = onFavoriteClick,
                 )
             }
+        },
+        bottomBar = {
+            FlourBottomBar()
         },
     ) { innerPadding ->
         Column(

@@ -3,10 +3,14 @@
 
     <!--  content description  -->
     <string name="description_back_navigation">戻る</string>
+    <string name="description_close">閉じる</string>
     <string name="description_add_recipe">レシピを追加</string>
     <string name="description_recipe_image">%sの完成画像</string>
     <string name="description_favorite_select">お気に入りアイコン お気に入り済み</string>
     <string name="description_favorite_un_select">お気に入りアイコン お気に入りではない</string>
+    <string name="description_add_recipe_image">完成したレシピのイメージ写真を追加する</string>
+    <string name="description_take_picture_recipe_image">完成したレシピのイメージ写真を撮影する</string>
+    <string name="description_delete">削除する</string>
 
     <!--  単位  -->
     <string name="servings_unit">人前</string>
@@ -38,5 +42,6 @@
     <string name="register_recipe_input_flour_title">小麦粉</string>
     <string name="register_recipe_input_ingredient_title">材料</string>
     <string name="register_recipe_input_reference_title">参照したもの</string>
+    <string name="register_recipe_input_image_title">レシピ画像の登録</string>
     <string name="register_recipe_input_total_quantity">小麦粉の合計使用量: %sg</string>
 </resources>

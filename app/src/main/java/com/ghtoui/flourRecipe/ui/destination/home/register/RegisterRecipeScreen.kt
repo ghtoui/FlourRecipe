@@ -14,6 +14,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -23,8 +25,11 @@ import androidx.navigation.NavHostController
 import com.ghtoui.domain.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
+import com.ghtoui.flourRecipe.ui.components.CameraPreview
+import com.ghtoui.flourRecipe.ui.components.FlourBottomBar
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
+import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterFlourRecipeImageContent
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputFlourContent
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputIngredientContent
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputProcessContent
@@ -66,6 +71,9 @@ private fun RegisterRecipeScreen(
     onReferenceURLClick: (URL) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val cameraOpenState = rememberSaveable {
+        mutableStateOf(false)
+    }
     val scrollState = rememberScrollState()
     Scaffold(
         modifier = modifier,
@@ -76,10 +84,18 @@ private fun RegisterRecipeScreen(
                 onBackClick = onBackClick,
             )
         },
+        bottomBar = {
+            if (!cameraOpenState.value) {
+                FlourBottomBar()
+            }
+        },
     ) { innerPadding ->
         Column(
             modifier = Modifier
-                .padding(top = innerPadding.calculateTopPadding()),
+                .padding(
+                    top = innerPadding.calculateTopPadding(),
+                    bottom = innerPadding.calculateBottomPadding(),
+                ),
         ) {
             Column(
                 modifier = Modifier
@@ -89,6 +105,15 @@ private fun RegisterRecipeScreen(
                     .padding(bottom = 20.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
+                RegisterFlourRecipeImageContent(
+                    modifier = Modifier.fillMaxWidth(),
+                    flourRecipeImage = null,
+                    onDeleteImage = {},
+                    onSelectFlourRecipeImage = {},
+                    onClickTakePicture = {
+                        cameraOpenState.value = true
+                    },
+                )
                 RegisterInputFlourContent(
                     modifier = Modifier.fillMaxWidth(),
                     onFlourAddClick = onFlourAddClick,
@@ -130,6 +155,16 @@ private fun RegisterRecipeScreen(
                 )
             }
         }
+    }
+    if (cameraOpenState.value) {
+        CameraPreview(
+            onClose = {
+                cameraOpenState.value = false
+            },
+            onCaptured = {
+                cameraOpenState.value = false
+            },
+        )
     }
 }
 
