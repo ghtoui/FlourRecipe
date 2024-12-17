@@ -40,7 +40,7 @@ internal fun RegisterInputFlourContent(
         modifier = modifier,
     ) {
         RegisterInputTitle(
-            title = stringResource(R.string.register_recipe_input_flour_title)
+            title = stringResource(R.string.register_recipe_input_flour_title),
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
@@ -54,7 +54,7 @@ internal fun RegisterInputFlourContent(
         RegisterInputContent(
             ingredients = flourIngredients,
             totalQuantity = flourTotalQuantity,
-            onAddClick = onFlourAddClick
+            onAddClick = onFlourAddClick,
         )
     }
 }
@@ -68,7 +68,7 @@ private fun RegisterInputFlourContentPreview() {
             RegisterInputFlourContent(
                 modifier = Modifier,
                 onFlourAddClick = {},
-                ingredients = dummyIngredients
+                ingredients = dummyIngredients,
             )
         }
     }

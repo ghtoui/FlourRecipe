@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import com.ghtoui.flourRecipe.ui.components.BiColorHorizontalDivider
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
-
 /**
  * 登録するもののタイトル
  *
@@ -23,7 +22,7 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 @Composable
 internal fun RegisterInputTitle(
     title: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier,
@@ -44,7 +43,7 @@ private fun RegisterInputFlourTitlePreview() {
         Surface {
             RegisterInputTitle(
                 modifier = Modifier,
-                title = "タイトル"
+                title = "タイトル",
             )
         }
     }

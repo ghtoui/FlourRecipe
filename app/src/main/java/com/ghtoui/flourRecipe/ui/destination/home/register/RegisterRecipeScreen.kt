@@ -37,7 +37,7 @@ import java.net.URL
  */
 @Composable
 internal fun RegisterRecipeScreen(
-    mainNavController: NavHostController = LocalMainNavController.current
+    mainNavController: NavHostController = LocalMainNavController.current,
 ) {
     RegisterRecipeScreen(
         recipe = getDummyRecipes().first(),
@@ -73,13 +73,13 @@ private fun RegisterRecipeScreen(
             FlourTopAppBar(
                 title = stringResource(R.string.register_recipe_app_top_bar_title),
                 backAble = backAble,
-                onBackClick = onBackClick
+                onBackClick = onBackClick,
             )
-        }
+        },
     ) { innerPadding ->
         Column(
             modifier = Modifier
-                .padding(top = innerPadding.calculateTopPadding())
+                .padding(top = innerPadding.calculateTopPadding()),
         ) {
             Column(
                 modifier = Modifier
@@ -102,13 +102,13 @@ private fun RegisterRecipeScreen(
                 RegisterInputProcessContent(
                     modifier = Modifier.fillMaxWidth(),
                     process = recipe.recipeDetail?.recipeProcess ?: emptyList(),
-                    onAddInputProcessClick = onAddInputProcessClick
+                    onAddInputProcessClick = onAddInputProcessClick,
                 )
                 RegisterInputReferenceContent(
                     modifier = Modifier.fillMaxWidth(),
                     references = recipe.recipeDetail?.references ?: emptyList(),
                     onReferenceAddClick = onReferenceAddClick,
-                    onReferenceURLClick = onReferenceURLClick
+                    onReferenceURLClick = onReferenceURLClick,
                 )
             }
             HorizontalDivider(
@@ -119,7 +119,7 @@ private fun RegisterRecipeScreen(
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(vertical = 4.dp),
-                onClick = onRegisterClick
+                onClick = onRegisterClick,
             ) {
                 Text(
                     modifier = Modifier.padding(

@@ -26,7 +26,7 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 internal fun RegisterInputIngredientContent(
     ingredients: List<RecipeIngredient>,
     onIngredientAddClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val otherIngredients = ingredients.filter {
         it.baseIngredient.ingredientCategory != IngredientCategory.Flour
@@ -36,13 +36,13 @@ internal fun RegisterInputIngredientContent(
         modifier = modifier,
     ) {
         RegisterInputTitle(
-            title = stringResource(R.string.register_recipe_input_ingredient_title)
+            title = stringResource(R.string.register_recipe_input_ingredient_title),
         )
         Spacer(modifier = Modifier.height(12.dp))
         RegisterInputContent(
             ingredients = otherIngredients,
             totalQuantity = null,
-            onAddClick = onIngredientAddClick
+            onAddClick = onIngredientAddClick,
         )
     }
 }
@@ -56,7 +56,7 @@ private fun RegisterInputIngredientContentPreview() {
             RegisterInputIngredientContent(
                 modifier = Modifier,
                 onIngredientAddClick = {},
-                ingredients = dummyIngredients
+                ingredients = dummyIngredients,
             )
         }
     }

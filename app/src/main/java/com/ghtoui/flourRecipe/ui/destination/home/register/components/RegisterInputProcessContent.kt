@@ -26,11 +26,11 @@ import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 internal fun RegisterInputProcessContent(
     process: List<RecipeProcess>,
     onAddInputProcessClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         process.forEachIndexed { index, process ->
             ProcessItem(
@@ -42,7 +42,7 @@ internal fun RegisterInputProcessContent(
         }
         AddButton(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            onClick = onAddInputProcessClick
+            onClick = onAddInputProcessClick,
         )
     }
 }

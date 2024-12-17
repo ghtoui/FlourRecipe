@@ -39,7 +39,7 @@ private fun ProcessMemoPreview() {
     FlourRecipeTheme {
         Surface {
             ProcessMemo(
-                memo = "メモです．"
+                memo = "メモです．",
             )
         }
     }

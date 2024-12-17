@@ -24,11 +24,11 @@ internal fun AddButton(
 ) {
     OutlinedButton(
         modifier = modifier,
-        onClick = onClick
+        onClick = onClick,
     ) {
         Text(
             text = stringResource(R.string.add_label),
-            style = MaterialTheme.typography.labelMedium
+            style = MaterialTheme.typography.labelMedium,
         )
     }
 }
