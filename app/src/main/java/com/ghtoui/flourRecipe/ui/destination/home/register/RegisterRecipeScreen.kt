@@ -25,6 +25,7 @@ import androidx.navigation.NavHostController
 import com.ghtoui.domain.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
+import com.ghtoui.flourRecipe.ui.components.CameraPreview
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterFlourRecipeImageContent
@@ -100,6 +101,9 @@ private fun RegisterRecipeScreen(
                     flourRecipeImage = null,
                     onDeleteImage = {},
                     onSelectFlourRecipeImage = {},
+                    onClickTakePicture = {
+                        cameraOpenState.value = true
+                    },
                 )
                 RegisterInputFlourContent(
                     modifier = Modifier.fillMaxWidth(),
@@ -142,6 +146,16 @@ private fun RegisterRecipeScreen(
                 )
             }
         }
+    }
+    if (cameraOpenState.value) {
+        CameraPreview(
+            onClose = {
+                cameraOpenState.value = false
+            },
+            onCaptured = {
+                cameraOpenState.value = false
+            }
+        )
     }
 }
 
