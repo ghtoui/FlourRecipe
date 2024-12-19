@@ -1,7 +1,11 @@
 package com.ghtoui.flourRecipe.ui.components
 
 import android.Manifest
-import android.graphics.Bitmap
+import android.view.OrientationEventListener
+import android.view.Surface.ROTATION_0
+import android.view.Surface.ROTATION_180
+import android.view.Surface.ROTATION_270
+import android.view.Surface.ROTATION_90
 import androidx.camera.compose.CameraXViewfinder
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -27,8 +31,11 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -51,14 +58,14 @@ import com.google.accompanist.permissions.PermissionState
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
-import kotlinx.coroutines.launch
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 internal fun CameraPreview(
-    onCaptured: (Bitmap) -> Unit,
+    onTakePicture: (ImageProxy) -> Unit,
     onClose: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -75,12 +82,13 @@ internal fun CameraPreview(
     }
 
     val context = LocalContext.current
+
     var currentSurfaceRequest: SurfaceRequest? by remember { mutableStateOf(null) }
     val lifecycleOwner = LocalLifecycleOwner.current
     val cameraExecutor: ExecutorService = remember { Executors.newSingleThreadExecutor() }
     val imageCapture = remember {
         ImageCapture.Builder()
-            .setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
+            .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
             .build()
     }
     val preview = remember {
@@ -129,7 +137,7 @@ internal fun CameraPreview(
                         cameraExecutor,
                         object : ImageCapture.OnImageCapturedCallback() {
                             override fun onCaptureSuccess(image: ImageProxy) {
-                                onCaptured(image.toBitmap())
+                                onTakePicture(image)
                                 image.close()
                             }
 

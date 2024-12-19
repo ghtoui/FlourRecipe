@@ -3,10 +3,13 @@ package com.ghtoui.flourRecipe.ui.destination.home.register
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
+import android.graphics.Matrix
 import android.net.Uri
+import androidx.camera.core.ImageProxy
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ghtoui.domain.model.recipe.RecipeIngredient
+import com.ghtoui.flourRecipe.model.camera.CameraState
 import com.ghtoui.flourRecipe.ui.destination.home.register.model.RegisterRecipeState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -28,10 +31,13 @@ internal class RegisterRecipeViewModel @Inject constructor(
         emptyList()
     )
 
+    private val cameraState: MutableStateFlow<CameraState> = MutableStateFlow(CameraState.Close)
+
     // 状態
     val state: StateFlow<RegisterRecipeState> = combine(
         recipeImage,
         recipeIngredients,
+        cameraState,
         ::RegisterRecipeState,
     ).stateIn(
         scope = viewModelScope,
@@ -60,5 +66,47 @@ internal class RegisterRecipeViewModel @Inject constructor(
      */
     fun onDeleteSelectFlourRecipeImage() {
         recipeImage.update { null }
+    }
+
+    /**
+     * カメラを開く
+     */
+    fun openCamera() {
+        cameraState.update {
+            CameraState.Open
+        }
+    }
+
+    /**
+     * カメラを閉じる
+     */
+    fun closeCamera() {
+        cameraState.update {
+            CameraState.Close
+        }
+    }
+
+    fun onTakePicture(imageProxy: ImageProxy) {
+        recipeImage.update {
+            fixRotate(imageProxy)
+        }
+        closeCamera()
+    }
+
+    private fun fixRotate(imageProxy: ImageProxy): Bitmap {
+        val rotation = imageProxy.imageInfo.rotationDegrees
+        val takePicBitMap = imageProxy.toBitmap()
+
+        val matrix = Matrix()
+        matrix.postRotate(rotation.toFloat())
+        return Bitmap.createBitmap(
+            takePicBitMap,
+            0,
+            0,
+            imageProxy.width,
+            imageProxy.height,
+            matrix,
+            false
+        )
     }
 }

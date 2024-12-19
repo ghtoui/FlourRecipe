@@ -33,7 +33,7 @@ internal fun RegisterFlourRecipeImageContent(
     flourRecipeImage: Bitmap?,
     onSelectFlourRecipeImage: (Uri) -> Unit,
     onDeleteFlourRecipeImage: () -> Unit,
-    onClickTakePicture: () -> Unit,
+    onOpenCamera: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -47,7 +47,7 @@ internal fun RegisterFlourRecipeImageContent(
             if (flourRecipeImage == null) {
                 RegisterImageButtons(
                     onSelectFlourRecipeImage = onSelectFlourRecipeImage,
-                    onClickTakePicture = onClickTakePicture,
+                    onClickTakePicture = onOpenCamera,
                 )
             } else {
                 Image(
@@ -84,7 +84,7 @@ private fun RegisterFlourRecipeImageContentPreview(
                 flourRecipeImage = param.bitmap,
                 onSelectFlourRecipeImage = {},
                 onDeleteFlourRecipeImage = {},
-                onClickTakePicture = {},
+                onOpenCamera = {},
             )
         }
     }

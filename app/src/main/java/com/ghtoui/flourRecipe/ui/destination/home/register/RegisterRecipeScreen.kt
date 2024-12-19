@@ -1,6 +1,7 @@
 package com.ghtoui.flourRecipe.ui.destination.home.register
 
 import android.net.Uri
+import androidx.camera.core.ImageProxy
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,8 +17,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -29,6 +28,7 @@ import androidx.navigation.NavHostController
 import com.ghtoui.domain.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
+import com.ghtoui.flourRecipe.model.camera.CameraState
 import com.ghtoui.flourRecipe.ui.components.CameraPreview
 import com.ghtoui.flourRecipe.ui.components.FlourBottomBar
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
@@ -63,7 +63,10 @@ internal fun RegisterRecipeScreen(
         onReferenceURLClick = {},
         onAddInputProcessClick = {},
         onSelectFlourRecipeImage = viewModel::onSelectFlourRecipeImage,
-        onDeleteFlourRecipeImage = viewModel::onDeleteSelectFlourRecipeImage
+        onDeleteFlourRecipeImage = viewModel::onDeleteSelectFlourRecipeImage,
+        onOpenCamera = viewModel::openCamera,
+        onCloseCamera = viewModel::closeCamera,
+        onTakePicture = viewModel::onTakePicture,
     )
 }
 
@@ -82,11 +85,11 @@ private fun RegisterRecipeScreen(
     onReferenceURLClick: (URL) -> Unit,
     onDeleteFlourRecipeImage: () -> Unit,
     onSelectFlourRecipeImage: (Uri) -> Unit,
+    onOpenCamera: () -> Unit,
+    onCloseCamera: () -> Unit,
+    onTakePicture: (ImageProxy) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val cameraOpenState = rememberSaveable {
-        mutableStateOf(false)
-    }
     val scrollState = rememberScrollState()
     Scaffold(
         modifier = modifier,
@@ -98,8 +101,11 @@ private fun RegisterRecipeScreen(
             )
         },
         bottomBar = {
-            if (!cameraOpenState.value) {
-                FlourBottomBar()
+            when (state.cameraState) {
+                CameraState.Close -> {
+                    FlourBottomBar()
+                }
+                CameraState.Open -> Unit
             }
         },
     ) { innerPadding ->
@@ -123,9 +129,7 @@ private fun RegisterRecipeScreen(
                     flourRecipeImage = state.recipeImage,
                     onDeleteFlourRecipeImage = onDeleteFlourRecipeImage,
                     onSelectFlourRecipeImage = onSelectFlourRecipeImage,
-                    onClickTakePicture = {
-                        cameraOpenState.value = true
-                    },
+                    onOpenCamera = onOpenCamera,
                 )
                 RegisterInputFlourContent(
                     modifier = Modifier.fillMaxWidth(),
@@ -169,15 +173,14 @@ private fun RegisterRecipeScreen(
             }
         }
     }
-    if (cameraOpenState.value) {
-        CameraPreview(
-            onClose = {
-                cameraOpenState.value = false
-            },
-            onCaptured = {
-                cameraOpenState.value = false
-            },
-        )
+    when (state.cameraState) {
+        CameraState.Open -> {
+            CameraPreview(
+                onClose = onCloseCamera,
+                onTakePicture = onTakePicture,
+            )
+        }
+        CameraState.Close -> Unit
     }
 }
 
@@ -200,6 +203,9 @@ private fun RegisterRecipeScreenPreview() {
                 onAddInputProcessClick = {},
                 onSelectFlourRecipeImage = {},
                 onDeleteFlourRecipeImage = {},
+                onOpenCamera = {},
+                onCloseCamera = {},
+                onTakePicture = {},
             )
         }
     }
