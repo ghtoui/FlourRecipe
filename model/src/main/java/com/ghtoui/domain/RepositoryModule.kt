@@ -20,6 +20,6 @@ internal abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun provideRecipeImageRepository(
-        impl: RecipeImageRepositoryImpl
+        impl: RecipeImageRepositoryImpl,
     ): RecipeImageRepository
 }

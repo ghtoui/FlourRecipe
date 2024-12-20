@@ -46,9 +46,9 @@ import com.google.accompanist.permissions.PermissionState
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
+import kotlinx.coroutines.launch
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
@@ -112,7 +112,7 @@ internal fun CameraPreview(
 
     currentSurfaceRequest?.let { surfaceRequest ->
         Scaffold(
-            modifier = modifier
+            modifier = modifier,
         ) { innerPadding ->
             CameraXViewfinder(
                 surfaceRequest = surfaceRequest,
@@ -151,7 +151,7 @@ private fun CameraFrame(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 12.dp)
+            .padding(horizontal = 12.dp),
     ) {
         IconButton(
             modifier = Modifier

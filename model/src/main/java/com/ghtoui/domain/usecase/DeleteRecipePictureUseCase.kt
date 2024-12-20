@@ -7,7 +7,7 @@ import javax.inject.Inject
  * 撮影した写真を削除
  */
 class DeleteRecipePictureUseCase @Inject constructor(
-    private val recipeImageRepository: RecipeImageRepository
+    private val recipeImageRepository: RecipeImageRepository,
 ) {
     operator fun invoke() = recipeImageRepository.deleteRecipePicture()
 }

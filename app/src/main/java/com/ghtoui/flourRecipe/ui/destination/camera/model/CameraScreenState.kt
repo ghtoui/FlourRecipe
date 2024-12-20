@@ -16,7 +16,7 @@ internal data class CameraScreenState(
     companion object {
         fun initial(): CameraScreenState = CameraScreenState(
             recipeImage = null,
-            cameraState = CameraState.Close
+            cameraState = CameraState.Close,
         )
     }
 }

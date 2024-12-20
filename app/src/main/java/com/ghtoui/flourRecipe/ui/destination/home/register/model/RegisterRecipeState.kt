@@ -2,7 +2,6 @@ package com.ghtoui.flourRecipe.ui.destination.home.register.model
 
 import android.graphics.Bitmap
 import com.ghtoui.domain.model.recipe.RecipeIngredient
-import com.ghtoui.flourRecipe.model.camera.CameraState
 
 /**
  * レシピ登録画面の状態

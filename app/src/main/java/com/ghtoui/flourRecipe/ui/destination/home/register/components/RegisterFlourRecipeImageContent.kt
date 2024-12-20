@@ -76,7 +76,7 @@ internal fun RegisterFlourRecipeImageContent(
 @Composable
 private fun RegisterFlourRecipeImageContentPreview(
     @PreviewParameter(RegisterFlourRecipeImageContentPreviewPPP::class)
-    param: RegisterFlourRecipeImageContentPreviewPPP.Param
+    param: RegisterFlourRecipeImageContentPreviewPPP.Param,
 ) {
     FlourRecipeTheme {
         Surface {
@@ -92,18 +92,18 @@ private fun RegisterFlourRecipeImageContentPreview(
 
 private class RegisterFlourRecipeImageContentPreviewPPP :
     CollectionPreviewParameterProvider<RegisterFlourRecipeImageContentPreviewPPP.Param>(
-    listOf(
-        Param(
-            bitmap = null
-        ),
-        Param(
-            Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888).apply {
+        listOf(
+            Param(
+                bitmap = null,
+            ),
+            Param(
+                Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888).apply {
                     Canvas(this).drawColor(Color.RED)
-                }
-        )
-    )
-) {
+                },
+            ),
+        ),
+    ) {
     data class Param(
-        val bitmap: Bitmap?
+        val bitmap: Bitmap?,
     )
 }

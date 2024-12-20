@@ -39,11 +39,11 @@ internal class CameraScreenViewModel @Inject constructor(
     val state: StateFlow<CameraScreenState> = combine(
         recipeImage,
         cameraState,
-        ::CameraScreenState
+        ::CameraScreenState,
     ).stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = CameraScreenState.initial()
+        initialValue = CameraScreenState.initial(),
     )
 
     /**
@@ -62,7 +62,7 @@ internal class CameraScreenViewModel @Inject constructor(
      */
     fun onTakePicture(imageProxy: ImageProxy) {
         takeRecipePictureUseCase(
-            fixRotate(imageProxy)
+            fixRotate(imageProxy),
         ).apply {
             cameraState.update {
                 CameraState.Close
@@ -90,7 +90,7 @@ internal class CameraScreenViewModel @Inject constructor(
     fun confirmEditImage() {
         recipeImage.value?.let {
             takeRecipePictureUseCase(
-                it
+                it,
             ).apply {
                 viewModelScope.launch {
                     _event.emit(CameraScreenEvent.TakePicture)
@@ -112,12 +112,12 @@ internal class CameraScreenViewModel @Inject constructor(
             imageProxy.width,
             imageProxy.height,
             matrix,
-            false
+            false,
         )
     }
 
     private fun rotateImage(
-        imageRotation: ImageRotation
+        imageRotation: ImageRotation,
     ) {
         recipeImage.value?.let { recipeImage ->
             val matrix = Matrix()
@@ -125,7 +125,7 @@ internal class CameraScreenViewModel @Inject constructor(
                 when (imageRotation) {
                     ImageRotation.Right -> 90f
                     ImageRotation.Left -> -90f
-                }
+                },
             )
             val bitmap = Bitmap.createBitmap(
                 recipeImage,
@@ -134,7 +134,7 @@ internal class CameraScreenViewModel @Inject constructor(
                 recipeImage.width,
                 recipeImage.height,
                 matrix,
-                false
+                false,
             )
             takeRecipePictureUseCase(bitmap)
         }

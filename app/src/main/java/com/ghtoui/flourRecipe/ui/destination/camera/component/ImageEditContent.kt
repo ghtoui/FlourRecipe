@@ -43,10 +43,10 @@ internal fun ImageEditContent(
     onBackCameraClick: () -> Unit,
     onConfirmClick: () -> Unit,
     recipeImage: Bitmap,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Scaffold(
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize(),
     ) { innerPadding ->
         Image(
             modifier = Modifier
@@ -59,24 +59,24 @@ internal fun ImageEditContent(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(horizontal = 12.dp)
+                .padding(horizontal = 12.dp),
         ) {
             IconButton(
                 modifier = Modifier
                     .align(Alignment.TopStart),
-                onClick = onBackCameraClick
+                onClick = onBackCameraClick,
             ) {
                 Icon(
                     modifier = Modifier,
                     painter = painterResource(R.drawable.ic_back),
-                    contentDescription = stringResource(R.string.description_back_navigation)
+                    contentDescription = stringResource(R.string.description_back_navigation),
                 )
             }
             RotationBottomBar(
                 onRightRotation = onRightRotation,
                 onLeftRotation = onLeftRotation,
                 onConfirmClick = onConfirmClick,
-                modifier = Modifier.align(Alignment.BottomCenter)
+                modifier = Modifier.align(Alignment.BottomCenter),
             )
         }
     }
@@ -87,7 +87,7 @@ private fun RotationBottomBar(
     onRightRotation: () -> Unit,
     onLeftRotation: () -> Unit,
     onConfirmClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier,
@@ -100,7 +100,7 @@ private fun RotationBottomBar(
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_left_rotate),
-                contentDescription = stringResource(R.string.description_rotate_left_image)
+                contentDescription = stringResource(R.string.description_rotate_left_image),
             )
         }
         Spacer(modifier = Modifier.width(20.dp))
@@ -109,7 +109,7 @@ private fun RotationBottomBar(
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_right_rotate),
-                contentDescription = stringResource(R.string.description_rotate_right_image)
+                contentDescription = stringResource(R.string.description_rotate_right_image),
             )
         }
         Spacer(modifier = Modifier.weight(1f))
@@ -118,7 +118,7 @@ private fun RotationBottomBar(
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_circle_check),
-                contentDescription = stringResource(R.string.description_edit_complete)
+                contentDescription = stringResource(R.string.description_edit_complete),
             )
         }
     }

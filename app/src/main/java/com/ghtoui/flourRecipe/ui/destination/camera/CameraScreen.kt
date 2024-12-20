@@ -30,7 +30,7 @@ internal fun CameraScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     LaunchedEffect(Unit) {
         viewModel.event.collect {
-            when(it) {
+            when (it) {
                 CameraScreenEvent.TakePicture -> {
                     mainNavController.navigateUp()
                 }
@@ -58,7 +58,7 @@ private fun CameraScreen(
     onLeftRotation: () -> Unit,
     onBackCameraClick: () -> Unit,
     onConfirmClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Box(
         modifier = modifier,

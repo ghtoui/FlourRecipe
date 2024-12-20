@@ -28,7 +28,7 @@ internal class RegisterRecipeViewModel @Inject constructor(
     private val takeRecipePictureUseCase: TakeRecipePictureUseCase,
 ) : ViewModel() {
     private val recipeIngredients: MutableStateFlow<List<RecipeIngredient>> = MutableStateFlow(
-        emptyList()
+        emptyList(),
     )
     private val recipeImage: StateFlow<Bitmap?> = getRecipeImageUseCase().apply {
         // 初期化時に削除する
@@ -43,7 +43,7 @@ internal class RegisterRecipeViewModel @Inject constructor(
     ).stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = RegisterRecipeState.initial()
+        initialValue = RegisterRecipeState.initial(),
     )
 
     /**
@@ -55,10 +55,10 @@ internal class RegisterRecipeViewModel @Inject constructor(
         val source = ImageDecoder
             .createSource(
                 context.contentResolver,
-                uri
+                uri,
             )
         takeRecipePictureUseCase(
-            ImageDecoder.decodeBitmap(source)
+            ImageDecoder.decodeBitmap(source),
         )
     }
 
