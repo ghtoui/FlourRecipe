@@ -1,6 +1,7 @@
-package com.ghtoui.domain.repository
+package com.ghtoui.domain.usecase
 
 import com.ghtoui.domain.model.recipe.FlourRecipe
+import com.ghtoui.domain.repository.FlourRecipeRepository
 import javax.inject.Inject
 
 /**

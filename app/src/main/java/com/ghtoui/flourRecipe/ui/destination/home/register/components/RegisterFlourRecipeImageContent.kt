@@ -1,5 +1,8 @@
 package com.ghtoui.flourRecipe.ui.destination.home.register.components
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
 import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -7,25 +10,30 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
 @Composable
 internal fun RegisterFlourRecipeImageContent(
-    flourRecipeImage: ImageBitmap?,
+    flourRecipeImage: Bitmap?,
     onSelectFlourRecipeImage: (Uri) -> Unit,
-    onDeleteImage: () -> Unit,
-    onClickTakePicture: () -> Unit,
+    onDeleteFlourRecipeImage: () -> Unit,
+    onOpenCamera: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -39,16 +47,20 @@ internal fun RegisterFlourRecipeImageContent(
             if (flourRecipeImage == null) {
                 RegisterImageButtons(
                     onSelectFlourRecipeImage = onSelectFlourRecipeImage,
-                    onClickTakePicture = onClickTakePicture,
+                    onClickTakePicture = onOpenCamera,
                 )
             } else {
                 Image(
-                    bitmap = flourRecipeImage,
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(12.dp))
+                        .weight(1f),
+                    bitmap = flourRecipeImage.asImageBitmap(),
                     contentDescription = null,
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 IconButton(
-                    onClick = onDeleteImage,
+                    modifier = Modifier.align(Alignment.Bottom),
+                    onClick = onDeleteFlourRecipeImage,
                 ) {
                     Icon(
                         painterResource(R.drawable.ic_delete),
@@ -62,15 +74,36 @@ internal fun RegisterFlourRecipeImageContent(
 
 @Preview
 @Composable
-private fun RegisterFlourRecipeImageContentPreview() {
+private fun RegisterFlourRecipeImageContentPreview(
+    @PreviewParameter(RegisterFlourRecipeImageContentPreviewPPP::class)
+    param: RegisterFlourRecipeImageContentPreviewPPP.Param,
+) {
     FlourRecipeTheme {
         Surface {
             RegisterFlourRecipeImageContent(
-                flourRecipeImage = null,
+                flourRecipeImage = param.bitmap,
                 onSelectFlourRecipeImage = {},
-                onDeleteImage = {},
-                onClickTakePicture = {},
+                onDeleteFlourRecipeImage = {},
+                onOpenCamera = {},
             )
         }
     }
+}
+
+private class RegisterFlourRecipeImageContentPreviewPPP :
+    CollectionPreviewParameterProvider<RegisterFlourRecipeImageContentPreviewPPP.Param>(
+        listOf(
+            Param(
+                bitmap = null,
+            ),
+            Param(
+                Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888).apply {
+                    Canvas(this).drawColor(Color.RED)
+                },
+            ),
+        ),
+    ) {
+    data class Param(
+        val bitmap: Bitmap?,
+    )
 }

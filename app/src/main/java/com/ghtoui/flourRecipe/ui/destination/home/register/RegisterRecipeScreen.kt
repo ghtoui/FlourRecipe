@@ -1,5 +1,6 @@
 package com.ghtoui.flourRecipe.ui.destination.home.register
 
+import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,26 +15,28 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.ghtoui.domain.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
-import com.ghtoui.flourRecipe.ui.components.CameraPreview
 import com.ghtoui.flourRecipe.ui.components.FlourBottomBar
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
+import com.ghtoui.flourRecipe.ui.destination.camera.navigateToCameraScreen
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterFlourRecipeImageContent
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputFlourContent
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputIngredientContent
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputProcessContent
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputReferenceContent
+import com.ghtoui.flourRecipe.ui.destination.home.register.model.RegisterRecipeState
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 import java.net.URL
 
@@ -43,8 +46,11 @@ import java.net.URL
 @Composable
 internal fun RegisterRecipeScreen(
     mainNavController: NavHostController = LocalMainNavController.current,
+    viewModel: RegisterRecipeViewModel = hiltViewModel(),
 ) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
     RegisterRecipeScreen(
+        state = state,
         recipe = getDummyRecipes().first(),
         backAble = true,
         onBackClick = mainNavController::navigateUp,
@@ -54,12 +60,16 @@ internal fun RegisterRecipeScreen(
         onRegisterClick = {},
         onReferenceURLClick = {},
         onAddInputProcessClick = {},
+        onSelectFlourRecipeImage = viewModel::onSelectFlourRecipeImage,
+        onDeleteFlourRecipeImage = viewModel::onDeleteSelectFlourRecipeImage,
+        onOpenCamera = mainNavController::navigateToCameraScreen,
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun RegisterRecipeScreen(
+    state: RegisterRecipeState,
     recipe: FlourRecipe,
     backAble: Boolean,
     onBackClick: () -> Unit,
@@ -69,11 +79,11 @@ private fun RegisterRecipeScreen(
     onReferenceAddClick: () -> Unit,
     onAddInputProcessClick: () -> Unit,
     onReferenceURLClick: (URL) -> Unit,
+    onDeleteFlourRecipeImage: () -> Unit,
+    onSelectFlourRecipeImage: (Uri) -> Unit,
+    onOpenCamera: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val cameraOpenState = rememberSaveable {
-        mutableStateOf(false)
-    }
     val scrollState = rememberScrollState()
     Scaffold(
         modifier = modifier,
@@ -85,9 +95,7 @@ private fun RegisterRecipeScreen(
             )
         },
         bottomBar = {
-            if (!cameraOpenState.value) {
-                FlourBottomBar()
-            }
+            FlourBottomBar()
         },
     ) { innerPadding ->
         Column(
@@ -107,12 +115,10 @@ private fun RegisterRecipeScreen(
             ) {
                 RegisterFlourRecipeImageContent(
                     modifier = Modifier.fillMaxWidth(),
-                    flourRecipeImage = null,
-                    onDeleteImage = {},
-                    onSelectFlourRecipeImage = {},
-                    onClickTakePicture = {
-                        cameraOpenState.value = true
-                    },
+                    flourRecipeImage = state.recipeImage,
+                    onDeleteFlourRecipeImage = onDeleteFlourRecipeImage,
+                    onSelectFlourRecipeImage = onSelectFlourRecipeImage,
+                    onOpenCamera = onOpenCamera,
                 )
                 RegisterInputFlourContent(
                     modifier = Modifier.fillMaxWidth(),
@@ -156,16 +162,6 @@ private fun RegisterRecipeScreen(
             }
         }
     }
-    if (cameraOpenState.value) {
-        CameraPreview(
-            onClose = {
-                cameraOpenState.value = false
-            },
-            onCaptured = {
-                cameraOpenState.value = false
-            },
-        )
-    }
 }
 
 @Preview(heightDp = 1500)
@@ -174,6 +170,7 @@ private fun RegisterRecipeScreenPreview() {
     FlourRecipeTheme {
         Surface {
             RegisterRecipeScreen(
+                state = RegisterRecipeState.initial(),
                 modifier = Modifier,
                 recipe = getDummyRecipes().first(),
                 backAble = true,
@@ -184,6 +181,9 @@ private fun RegisterRecipeScreenPreview() {
                 onRegisterClick = {},
                 onReferenceURLClick = {},
                 onAddInputProcessClick = {},
+                onSelectFlourRecipeImage = {},
+                onDeleteFlourRecipeImage = {},
+                onOpenCamera = {},
             )
         }
     }
