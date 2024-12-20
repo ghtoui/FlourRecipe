@@ -1,11 +1,6 @@
 package com.ghtoui.flourRecipe.ui.components
 
 import android.Manifest
-import android.view.OrientationEventListener
-import android.view.Surface.ROTATION_0
-import android.view.Surface.ROTATION_180
-import android.view.Surface.ROTATION_270
-import android.view.Surface.ROTATION_90
 import androidx.camera.compose.CameraXViewfinder
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -19,23 +14,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -123,15 +111,16 @@ internal fun CameraPreview(
     }
 
     currentSurfaceRequest?.let { surfaceRequest ->
-        Box(
-            modifier = modifier,
-        ) {
+        Scaffold(
+            modifier = modifier
+        ) { innerPadding ->
             CameraXViewfinder(
                 surfaceRequest = surfaceRequest,
                 modifier = Modifier
                     .fillMaxSize(),
             )
             CameraFrame(
+                modifier = Modifier.padding(innerPadding),
                 onTakePicture = {
                     imageCapture.takePicture(
                         cameraExecutor,
@@ -154,50 +143,50 @@ internal fun CameraPreview(
 }
 
 @Composable
-private fun BoxScope.CameraFrame(
+private fun CameraFrame(
     onTakePicture: () -> Unit,
     onClose: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    IconButton(
-        modifier = Modifier
-            .align(Alignment.TopStart)
-            .padding(
-                top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding(),
-            )
-            .padding(start = 12.dp),
-        onClick = onClose,
-    ) {
-        Icon(
-            painter = painterResource(R.drawable.ic_close),
-            contentDescription = stringResource(R.string.description_close),
-            tint = Color.White,
-        )
-    }
     Box(
-        modifier = Modifier
-            .align(Alignment.BottomCenter)
-            .padding(
-                bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding(),
-            )
-            .clip(CircleShape)
-            .border(
-                width = 2.dp,
-                color = Color.White,
-                shape = CircleShape,
-            )
-            .padding(4.dp),
-        contentAlignment = Alignment.Center,
+        modifier = modifier
+            .fillMaxSize()
+            .padding(horizontal = 12.dp)
     ) {
+        IconButton(
+            modifier = Modifier
+                .align(Alignment.TopStart),
+            onClick = onClose,
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.ic_close),
+                contentDescription = stringResource(R.string.description_close),
+                tint = Color.White,
+            )
+        }
         Box(
             modifier = Modifier
-                .size(60.dp)
+                .align(Alignment.BottomCenter)
                 .clip(CircleShape)
-                .background(Color.White)
-                .clickable(
-                    role = Role.Button,
-                    onClick = onTakePicture,
-                ),
-        )
+                .border(
+                    width = 2.dp,
+                    color = Color.White,
+                    shape = CircleShape,
+                )
+                .padding(4.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(60.dp)
+                    .clip(CircleShape)
+                    .background(Color.White)
+                    .clickable(
+                        role = Role.Button,
+                        onClick = onTakePicture,
+                    ),
+            )
+        }
     }
 }
 

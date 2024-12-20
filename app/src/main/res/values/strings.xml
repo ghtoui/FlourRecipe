@@ -11,6 +11,10 @@
     <string name="description_add_recipe_image">完成したレシピのイメージ写真を追加する</string>
     <string name="description_take_picture_recipe_image">完成したレシピのイメージ写真を撮影する</string>
     <string name="description_delete">削除する</string>
+    <string name="description_take_image">撮影した画像</string>
+    <string name="description_rotate_right_image">画像を右へ回転</string>
+    <string name="description_rotate_left_image">画像を左へ回転</string>
+    <string name="description_edit_complete">編集完了</string>
 
     <!--  単位  -->
     <string name="servings_unit">人前</string>

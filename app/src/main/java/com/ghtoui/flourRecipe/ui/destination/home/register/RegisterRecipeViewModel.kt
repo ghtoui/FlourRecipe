@@ -1,6 +1,7 @@
 package com.ghtoui.flourRecipe.ui.destination.home.register
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
 import androidx.lifecycle.ViewModel
@@ -29,10 +30,14 @@ internal class RegisterRecipeViewModel @Inject constructor(
     private val recipeIngredients: MutableStateFlow<List<RecipeIngredient>> = MutableStateFlow(
         emptyList()
     )
+    private val recipeImage: StateFlow<Bitmap?> = getRecipeImageUseCase().apply {
+        // 初期化時に削除する
+        deleteRecipePictureUseCase()
+    }
 
     // 状態
     val state: StateFlow<RegisterRecipeState> = combine(
-        getRecipeImageUseCase(),
+        recipeImage,
         recipeIngredients,
         ::RegisterRecipeState,
     ).stateIn(

@@ -2,7 +2,6 @@ package com.ghtoui.flourRecipe.ui.destination.camera
 
 import android.graphics.Bitmap
 import android.graphics.Matrix
-import android.util.Log
 import androidx.camera.core.ImageProxy
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,6 +10,7 @@ import com.ghtoui.domain.usecase.TakeRecipePictureUseCase
 import com.ghtoui.flourRecipe.model.camera.CameraState
 import com.ghtoui.flourRecipe.ui.destination.camera.model.CameraScreenEvent
 import com.ghtoui.flourRecipe.ui.destination.camera.model.CameraScreenState
+import com.ghtoui.flourRecipe.ui.destination.camera.model.ImageRotation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -32,10 +32,12 @@ internal class CameraScreenViewModel @Inject constructor(
     private val _event: MutableSharedFlow<CameraScreenEvent> = MutableSharedFlow()
     val event: SharedFlow<CameraScreenEvent> = _event.asSharedFlow()
 
+    private val recipeImage: StateFlow<Bitmap?> = getRecipeImageUseCase()
+
     private val cameraState: MutableStateFlow<CameraState> = MutableStateFlow(CameraState.Open)
 
     val state: StateFlow<CameraScreenState> = combine(
-        getRecipeImageUseCase(),
+        recipeImage,
         cameraState,
         ::CameraScreenState
     ).stateIn(
@@ -53,12 +55,46 @@ internal class CameraScreenViewModel @Inject constructor(
         }
     }
 
+    /**
+     * カメラ撮影
+     *
+     * @param imageProxy 撮影した情報をそのまま
+     */
     fun onTakePicture(imageProxy: ImageProxy) {
         takeRecipePictureUseCase(
             fixRotate(imageProxy)
         ).apply {
-            viewModelScope.launch {
-                _event.emit(CameraScreenEvent.TakePicture)
+            cameraState.update {
+                CameraState.Close
+            }
+        }
+    }
+
+    /**
+     * 左に回す
+     */
+    fun imageLeftRotate() {
+        rotateImage(imageRotation = ImageRotation.Left)
+    }
+
+    /**
+     * 右に回す
+     */
+    fun imageRightRotate() {
+        rotateImage(imageRotation = ImageRotation.Right)
+    }
+
+    /**
+     * 編集を完了する
+     */
+    fun confirmEditImage() {
+        recipeImage.value?.let {
+            takeRecipePictureUseCase(
+                it
+            ).apply {
+                viewModelScope.launch {
+                    _event.emit(CameraScreenEvent.TakePicture)
+                }
             }
         }
     }
@@ -78,5 +114,29 @@ internal class CameraScreenViewModel @Inject constructor(
             matrix,
             false
         )
+    }
+
+    private fun rotateImage(
+        imageRotation: ImageRotation
+    ) {
+        recipeImage.value?.let { recipeImage ->
+            val matrix = Matrix()
+            matrix.postRotate(
+                when (imageRotation) {
+                    ImageRotation.Right -> 90f
+                    ImageRotation.Left -> -90f
+                }
+            )
+            val bitmap = Bitmap.createBitmap(
+                recipeImage,
+                0,
+                0,
+                recipeImage.width,
+                recipeImage.height,
+                matrix,
+                false
+            )
+            takeRecipePictureUseCase(bitmap)
+        }
     }
 }
