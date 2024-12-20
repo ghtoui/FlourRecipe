@@ -1,7 +1,6 @@
 package com.ghtoui.flourRecipe.ui.destination.home.register
 
 import android.net.Uri
-import androidx.camera.core.ImageProxy
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,10 +27,9 @@ import androidx.navigation.NavHostController
 import com.ghtoui.domain.model.recipe.FlourRecipe
 import com.ghtoui.flourRecipe.R
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
-import com.ghtoui.flourRecipe.model.camera.CameraState
-import com.ghtoui.flourRecipe.ui.components.CameraPreview
 import com.ghtoui.flourRecipe.ui.components.FlourBottomBar
 import com.ghtoui.flourRecipe.ui.components.FlourTopAppBar
+import com.ghtoui.flourRecipe.ui.destination.camera.navigateToCameraScreen
 import com.ghtoui.flourRecipe.ui.destination.home.preview.getDummyRecipes
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterFlourRecipeImageContent
 import com.ghtoui.flourRecipe.ui.destination.home.register.components.RegisterInputFlourContent
@@ -64,9 +62,7 @@ internal fun RegisterRecipeScreen(
         onAddInputProcessClick = {},
         onSelectFlourRecipeImage = viewModel::onSelectFlourRecipeImage,
         onDeleteFlourRecipeImage = viewModel::onDeleteSelectFlourRecipeImage,
-        onOpenCamera = viewModel::openCamera,
-        onCloseCamera = viewModel::closeCamera,
-        onTakePicture = viewModel::onTakePicture,
+        onOpenCamera = mainNavController::navigateToCameraScreen,
     )
 }
 
@@ -86,8 +82,6 @@ private fun RegisterRecipeScreen(
     onDeleteFlourRecipeImage: () -> Unit,
     onSelectFlourRecipeImage: (Uri) -> Unit,
     onOpenCamera: () -> Unit,
-    onCloseCamera: () -> Unit,
-    onTakePicture: (ImageProxy) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val scrollState = rememberScrollState()
@@ -101,12 +95,7 @@ private fun RegisterRecipeScreen(
             )
         },
         bottomBar = {
-            when (state.cameraState) {
-                CameraState.Close -> {
-                    FlourBottomBar()
-                }
-                CameraState.Open -> Unit
-            }
+            FlourBottomBar()
         },
     ) { innerPadding ->
         Column(
@@ -173,15 +162,6 @@ private fun RegisterRecipeScreen(
             }
         }
     }
-    when (state.cameraState) {
-        CameraState.Open -> {
-            CameraPreview(
-                onClose = onCloseCamera,
-                onTakePicture = onTakePicture,
-            )
-        }
-        CameraState.Close -> Unit
-    }
 }
 
 @Preview(heightDp = 1500)
@@ -204,8 +184,6 @@ private fun RegisterRecipeScreenPreview() {
                 onSelectFlourRecipeImage = {},
                 onDeleteFlourRecipeImage = {},
                 onOpenCamera = {},
-                onCloseCamera = {},
-                onTakePicture = {},
             )
         }
     }
