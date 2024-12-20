@@ -3,6 +3,7 @@ package com.ghtoui.flourRecipe.ui.destination.camera
 import androidx.camera.core.ImageProxy
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -12,6 +13,7 @@ import androidx.navigation.NavHostController
 import com.ghtoui.flourRecipe.core.ui.LocalMainNavController
 import com.ghtoui.flourRecipe.model.camera.CameraState
 import com.ghtoui.flourRecipe.ui.components.CameraPreview
+import com.ghtoui.flourRecipe.ui.destination.camera.model.CameraScreenEvent
 import com.ghtoui.flourRecipe.ui.destination.camera.model.CameraScreenState
 import com.ghtoui.flourRecipe.ui.theme.FlourRecipeTheme
 
@@ -24,6 +26,15 @@ internal fun CameraScreen(
     viewModel: CameraScreenViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    LaunchedEffect(Unit) {
+        viewModel.event.collect {
+            when(it) {
+                CameraScreenEvent.TakePicture -> {
+                    mainNavController.navigateUp()
+                }
+            }
+        }
+    }
     CameraScreen(
         state = state,
         modifier = Modifier,

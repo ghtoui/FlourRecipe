@@ -6,8 +6,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
-class RecipeImageRepositoryImpl : RecipeImageRepository {
+class RecipeImageRepositoryImpl @Inject constructor() : RecipeImageRepository {
     private val _recipeImage: MutableStateFlow<Bitmap?> = MutableStateFlow(null)
     override val recipeImage: StateFlow<Bitmap?> = _recipeImage.asStateFlow()
 
